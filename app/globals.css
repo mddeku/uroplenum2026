@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body), sans-serif;
+  background: #f6f8fb;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading), serif;
+}
+
+::selection {
+  background: rgba(199, 161, 74, 0.24);
+}
+
+@layer components {
+  .site-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-pad {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .surface-card {
+    @apply rounded-lg border border-slate-200 bg-white shadow-card;
+  }
+
+  .fine-label {
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-gold-600;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-up {
+  animation: reveal-up 0.65s ease both;
+}
+
+.hero-media {
+  background:
+    linear-gradient(135deg, rgba(10, 31, 68, 0.78), rgba(13, 74, 121, 0.42)),
+    url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80");
+  background-position: center;
+  background-size: cover;
+}
+
+.venue-media {
+  background:
+    linear-gradient(135deg, rgba(10, 31, 68, 0.78), rgba(13, 74, 121, 0.34)),
+    url("https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1600&q=80");
+  background-position: center;
+  background-size: cover;
+}
