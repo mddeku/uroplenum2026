@@ -22,13 +22,21 @@ export const pagePath: Record<PageKey, string> = {
   venue: "/venue"
 };
 
+export const mapUrl = "https://2gis.kz/astana/firm/70000001033293245";
+
+export const sponsorLogos = [
+  { src: "/sponsors/sponsor-1.png", alt: "Astana Medical University" },
+  { src: "/sponsors/sponsor-2.png", alt: "Astana Urologists and Andrologists Society" },
+  { src: "/sponsors/sponsor-3.png", alt: "KAUA" }
+];
+
 export const copy = {
   en: {
     brand: "UROPLENUM 2026",
     congress: "Plenum of Urologists of Kazakhstan 2026",
-    eyebrow: "National urology congress",
-    dateCity: "July 3, 2026 | Astana, Kazakhstan",
-    site: "uroplenum.vercel.app",
+    eyebrow: "Plenum of Urologists of Kazakhstan 2026",
+    dateCity: "July 3, 2026 | Astana",
+    site: "",
     subtitle:
       "A national scientific and educational meeting bringing together leading urologists, researchers, healthcare leaders and international faculty.",
     aboutEyebrow: "About the Plenum",
@@ -42,14 +50,14 @@ export const copy = {
     collaboration: "Professional Collaboration",
     collaborationText: "A collegial forum for national societies, universities, hospitals and industry partners.",
     organizers: "Organizers / Partners",
-    organizersText: "Partner and organizer logos can be replaced when the final list is confirmed.",
+    organizersText: "Official organizers and partners of the plenum.",
     contactTitle: "Planning to attend UROPLENUM 2026?",
     contactText: "Registration and participant information will be published by the organizing committee.",
     viewProgram: "View Program",
     meetFaculty: "Meet the Faculty",
     programTitle: "Scientific Program",
-    programIntro: "Preliminary schedule based on the submitted Word program files.",
-    programNote: "Times and halls may be refined before publication of the final congress program.",
+    programIntro: "",
+    programNote: "Detailed schedule by hall, time, speaker and presentation topic.",
     dayOne: "July 3, 2026",
     dayTwo: "Program Tracks",
     facultyTitle: "Faculty and Invited Guests",
@@ -59,25 +67,25 @@ export const copy = {
     internationalFaculty: "International Faculty",
     moderators: "Moderators",
     venueTitle: "Congress-center QazExpoCongress",
-    venueIntro: "Congress-center QazExpoCongress, Astana. Address: 55/13 Mangilik El Avenue, Astana.",
+    venueIntro: "Congress-center QazExpoCongress, Astana. Address: 12 Heydar Aliyev Street.",
     venueAbout: "About the Venue",
     venueAboutText:
       "QazExpoCongress is a multifunctional congress venue in Astana with a main hall, conference halls and an exhibition lobby for plenary sessions, parallel sections and professional networking.",
     gettingThere: "How to Get There",
-    gettingThereText: "Located on Mangilik El Avenue, the venue is accessible by city transport, taxi and organized congress transfers.",
+    gettingThereText: "Located at 12 Heydar Aliyev Street, the venue is accessible by city transport, taxi and organized congress transfers.",
     accommodation: "Accommodation",
     accommodationText: "Recommended hotel options and congress rates can be added after partner hotels are confirmed.",
-    map: "Map Placeholder",
+    map: "2GIS Map",
     contact: "Contact",
-    email: "info@uroplenum.kz",
+    email: "uroplenum2026@mail.ru",
     footerRights: "© 2026 UROPLENUM 2026. All rights reserved."
   },
   ru: {
     brand: "UROPLENUM 2026",
     congress: "Пленум урологов Казахстана 2026",
-    eyebrow: "Национальный урологический конгресс",
-    dateCity: "3 июля 2026 | Астана, Казахстан",
-    site: "uroplenum.vercel.app",
+    eyebrow: "Пленум урологов Казахстана 2026",
+    dateCity: "3 июля 2026 | Астана",
+    site: "",
     subtitle:
       "Национальная научно-образовательная встреча, объединяющая ведущих урологов, исследователей, руководителей здравоохранения и международных экспертов.",
     aboutEyebrow: "О пленуме",
@@ -91,14 +99,14 @@ export const copy = {
     collaboration: "Профессиональное сотрудничество",
     collaborationText: "Коллегиальная площадка для обществ, университетов, клиник и индустриальных партнеров.",
     organizers: "Организаторы / Партнеры",
-    organizersText: "Логотипы партнеров и организаторов можно заменить после утверждения финального списка.",
+    organizersText: "Официальные организаторы и партнеры пленума.",
     contactTitle: "Планируете участие в UROPLENUM 2026?",
     contactText: "Информация о регистрации и участии будет опубликована организационным комитетом.",
     viewProgram: "Смотреть программу",
     meetFaculty: "Спикеры",
     programTitle: "Научная программа",
-    programIntro: "Предварительное расписание на основе предоставленных Word-файлов программы.",
-    programNote: "Время и залы могут быть уточнены перед публикацией финальной программы.",
+    programIntro: "",
+    programNote: "Подробное расписание по залам, времени, спикерам и темам докладов.",
     dayOne: "3 июля 2026",
     dayTwo: "Треки программы",
     facultyTitle: "Спикеры и приглашенные гости",
@@ -108,25 +116,25 @@ export const copy = {
     internationalFaculty: "Международные спикеры",
     moderators: "Модераторы",
     venueTitle: "Конгресс-центр QazExpoCongress",
-    venueIntro: "Конгресс-центр QazExpoCongress, Астана. Адрес: проспект Мәңгілік Ел, 55/13, Астана.",
+    venueIntro: "Конгресс-центр QazExpoCongress, Астана. Адрес: ул. Гейдар Алиева 12.",
     venueAbout: "О площадке",
     venueAboutText:
       "QazExpoCongress — многофункциональная конгресс-площадка в Астане с главным залом, конференц-залами и выставочным фойе для пленарных заседаний, параллельных секций и профессионального нетворкинга.",
     gettingThere: "Как добраться",
-    gettingThereText: "Площадка расположена на проспекте Мәңгілік Ел и доступна на городском транспорте, такси и организованных трансферах.",
+    gettingThereText: "Площадка расположена по адресу ул. Гейдар Алиева 12 и доступна на городском транспорте, такси и организованных трансферах.",
     accommodation: "Проживание",
     accommodationText: "Рекомендованные отели и специальные условия можно добавить после подтверждения партнерских гостиниц.",
-    map: "Карта",
+    map: "Карта 2GIS",
     contact: "Контакты",
-    email: "info@uroplenum.kz",
+    email: "uroplenum2026@mail.ru",
     footerRights: "© 2026 UROPLENUM 2026. Все права защищены."
   },
   kz: {
     brand: "UROPLENUM 2026",
     congress: "Қазақстан урологтарының пленумы 2026",
-    eyebrow: "Ұлттық урологиялық конгресс",
-    dateCity: "2026 жылғы 3 шілде | Астана, Қазақстан",
-    site: "uroplenum.vercel.app",
+    eyebrow: "Қазақстан урологтарының пленумы 2026",
+    dateCity: "2026 жылғы 3 шілде | Астана",
+    site: "",
     subtitle:
       "Жетекші урологтарды, зерттеушілерді, денсаулық сақтау басшыларын және халықаралық сарапшыларды біріктіретін ұлттық ғылыми-білім беру кездесуі.",
     aboutEyebrow: "Пленум туралы",
@@ -140,14 +148,14 @@ export const copy = {
     collaboration: "Кәсіби ынтымақтастық",
     collaborationText: "Қоғамдар, университеттер, клиникалар және индустриялық серіктестер үшін әріптестік алаңы.",
     organizers: "Ұйымдастырушылар / Серіктестер",
-    organizersText: "Серіктестер мен ұйымдастырушылардың логотиптерін финалдық тізім бекітілгеннен кейін ауыстыруға болады.",
+    organizersText: "Пленумның ресми ұйымдастырушылары мен серіктестері.",
     contactTitle: "UROPLENUM 2026 қатысуды жоспарлайсыз ба?",
     contactText: "Тіркеу және қатысу туралы ақпаратты ұйымдастыру комитеті жариялайды.",
     viewProgram: "Бағдарламаны көру",
     meetFaculty: "Спикерлер",
     programTitle: "Ғылыми бағдарлама",
-    programIntro: "Ұсынылған Word файлдары негізіндегі алдын ала кесте.",
-    programNote: "Уақыты мен залдары финалдық бағдарлама жарияланғанға дейін нақтылануы мүмкін.",
+    programIntro: "",
+    programNote: "Залдар, уақыт, спикерлер және баяндама тақырыптары бойынша толық кесте.",
     dayOne: "2026 жылғы 3 шілде",
     dayTwo: "Бағдарлама тректері",
     facultyTitle: "Спикерлер және шақырылған қонақтар",
@@ -157,17 +165,17 @@ export const copy = {
     internationalFaculty: "Халықаралық спикерлер",
     moderators: "Модераторлар",
     venueTitle: "QazExpoCongress конгресс-орталығы",
-    venueIntro: "QazExpoCongress конгресс-орталығы, Астана. Мекенжайы: Мәңгілік Ел даңғылы, 55/13, Астана.",
+    venueIntro: "QazExpoCongress конгресс-орталығы, Астана. Мекенжайы: Гейдар Алиев көшесі, 12.",
     venueAbout: "Өтетін орын туралы",
     venueAboutText:
       "QazExpoCongress — Астанадағы көпфункционалды конгресс алаңы. Негізгі зал, конференц-залдар және көрме фойесі пленарлық отырыстарға, параллель секцияларға және кәсіби байланысқа қолайлы.",
     gettingThere: "Қалай жетуге болады",
-    gettingThereText: "Өтетін орын Мәңгілік Ел даңғылында орналасқан, қалалық көлікпен, таксимен және ұйымдастырылған трансфермен жетуге болады.",
+    gettingThereText: "Өтетін орын Гейдар Алиев көшесі, 12 мекенжайында орналасқан, қалалық көлікпен, таксимен және ұйымдастырылған трансфермен жетуге болады.",
     accommodation: "Қонақ үй",
     accommodationText: "Ұсынылатын қонақ үйлер мен арнайы шарттарды серіктес қонақ үйлер бекітілгеннен кейін қосуға болады.",
-    map: "Карта",
+    map: "2GIS картасы",
     contact: "Байланыс",
-    email: "info@uroplenum.kz",
+    email: "uroplenum2026@mail.ru",
     footerRights: "© 2026 UROPLENUM 2026. Барлық құқықтар қорғалған."
   }
 } satisfies Record<Lang, Record<string, string>>;
@@ -212,124 +220,142 @@ export const overview: Record<Lang, string[][]> = {
   ]
 };
 
-export const sessions = [
+export const programDetails = [
   {
     time: "09:00-09:30",
     room: { en: "Aspan Hall", ru: "Зал «Аспан»", kz: "«Аспан» залы" },
-    title: {
-      en: "Official Opening and Welcome Remarks",
-      ru: "Официальное открытие и приветственные слова",
-      kz: "Ресми ашылу және құттықтау сөздер"
-    },
-    moderators: ["Timur Muratov", "Anar Turmukhambetova", "Ainur Tuleuova", "Mirzakarim Alchinbayev"],
-    talks: {
-      en: ["Welcome addresses by invited officials and the organizing committee"],
-      ru: ["Приветственные слова приглашенных официальных лиц и организационного комитета"],
-      kz: ["Шақырылған ресми тұлғалар мен ұйымдастыру комитетінің құттықтау сөздері"]
-    }
+    title: { en: "Official Opening and Welcome Remarks", ru: "Официальное открытие и приветственные слова", kz: "Ресми ашылу және құттықтау сөздер" },
+    moderators: [],
+    talks: [
+      { time: "09:00-09:30", speaker: "Timur Muratov", topic: "Vice Minister of Healthcare of the Republic of Kazakhstan" },
+      { time: "09:00-09:30", speaker: "Anar Turmukhambetova", topic: "Rector of Astana Medical University" },
+      { time: "09:00-09:30", speaker: "Ainur Tuleuova", topic: "Head of Astana City Health Department" },
+      { time: "09:00-09:30", speaker: "Mirzakarim Alchinbayev", topic: "Chief Urologist of the Republic of Kazakhstan" }
+    ]
   },
   {
     time: "09:30-13:15",
     room: { en: "Aspan Hall", ru: "Зал «Аспан»", kz: "«Аспан» залы" },
     title: { en: "Endourology Session", ru: "Секция «Эндоурология»", kz: "Эндоурология секциясы" },
     moderators: ["Chingis Baimenov", "Yongda Liu", "Kemal Sarica"],
-    talks: {
-      en: ["AI in urolithiasis detection", "BPH management", "RIRS and PCNL complications", "Complex renal stones"],
-      ru: ["Искусственный интеллект в диагностике мочекаменной болезни", "Лечение ДГПЖ", "Осложнения RIRS и PCNL", "Сложные камни почек"],
-      kz: ["Уролитиаз диагностикасындағы жасанды интеллект", "Қуықасты безі гиперплазиясын емдеу", "RIRS және PCNL асқынулары", "Күрделі бүйрек тастары"]
-    }
+    talks: [
+      { time: "09:30-09:45", speaker: "Ali Talyshinskii", topic: "Effectiveness of Artificial Intelligence in Detection and Classification of Urolithiasis on Computed Tomography: Analysis of Global Evidence" },
+      { time: "09:45-10:00", speaker: "Wang Jianye", topic: "Current Status of BPH Management in China" },
+      { time: "10:00-10:15", speaker: "Ali Talyshinskii", topic: "Clinical Effectiveness and Limitations of Citrate Therapy for Uric Acid Stones: New Perspectives on Traditional Approaches" },
+      { time: "10:15-10:30", speaker: "Asylan Nurgaliyev", topic: "Retrograde intrarenal surgery" },
+      { time: "10:30-10:45", speaker: "Adil Muslimovich Karimov", topic: "Laparoscopy from Scratch: YouTube as a Personal Surgical Assistant. Personal Experience" },
+      { time: "10:45-11:00", speaker: "Zhaslan Amirzhanov", topic: "Radiation safety during percutaneous nephrolithotomy" },
+      { time: "11:00-11:15", speaker: "Dmitry Gorelov", topic: "Active Suction in Stone Disease Treatment: Evolution of the Technique" },
+      { time: "11:15-11:30", speaker: "Viktoria Shaderkina", topic: "New Technologies in Outpatient Urology" },
+      { time: "11:30-11:45", speaker: "Kemal Sarica", topic: "Complications of PNL: How to prevent and manage?" },
+      { time: "11:45-12:00", speaker: "Nikolay Alexandrovich Baykov", topic: "Analysis of En-bloc Technique Outcomes in Patients with NMIBC" },
+      { time: "12:00-12:15", speaker: "Yongda Liu", topic: "How to Manage Complex Renal Stones" },
+      { time: "12:15-12:30", speaker: "Stanislav Ali", topic: "Modern trends in urolithiasis treatment" },
+      { time: "12:30-12:45", speaker: "Evgeny Bezrukov", topic: "Innovations and Modern Trends in Urology" },
+      { time: "12:45-13:00", speaker: "Zhaslan Amirzhanov", topic: "Clinical Guidelines and Standards for Managing Lower Urinary Tract Infections" },
+      { time: "13:00-13:15", speaker: "Ulanbek Zhanbyrbekuly", topic: "Narrow Urethra and Benign Prostatic Hyperplasia: Treatment Options" }
+    ]
   },
   {
     time: "09:30-12:00",
     room: { en: "Caspian Hall", ru: "Зал «Каспий»", kz: "«Каспий» залы" },
     title: { en: "Uro-oncology Session", ru: "Секция «Онкоурология»", kz: "Онкоурология секциясы" },
     moderators: ["Khusan Umurzakov", "Evgeny Bezrukov", "Anvar Davranov"],
-    talks: {
-      en: ["Upper urinary tract tumors", "Muscle-invasive bladder cancer", "Kidney-sparing surgery"],
-      ru: ["Опухоли верхних мочевых путей", "Мышечно-инвазивный рак мочевого пузыря", "Органосохраняющая хирургия почки"],
-      kz: ["Жоғарғы несеп жолдарының ісіктері", "Бұлшықетке инвазияланған қуық обыры", "Бүйректі сақтайтын хирургия"]
-    }
+    talks: [
+      { time: "09:30-09:45", speaker: "Anvar Davranov", topic: "New and Unusual Clinical Cases in Upper Urinary Tract Tumor Surgery" },
+      { time: "09:45-10:00", speaker: "Olzhas Zakarya", topic: "Trimodal Therapy for Muscle-Invasive Bladder Cancer: Real-World Experience of KazIOR" },
+      { time: "10:00-10:15", speaker: "Merey Kazgaliyev", topic: "Kidney-Sparing Surgery for Kidney Cancer" },
+      { time: "10:15-12:00", speaker: "Speakers", topic: "Topics to be confirmed" }
+    ]
   },
   {
     time: "14:00-16:30",
     room: { en: "Aspan Hall", ru: "Зал «Аспан»", kz: "«Аспан» залы" },
     title: { en: "Men's Health Session", ru: "Секция «Мужское здоровье»", kz: "Ерлер денсаулығы секциясы" },
     moderators: ["Bulat Shalekenov", "Ege Can Serefoglu", "Kasymkhan Sultanbekov"],
-    talks: {
-      en: ["Male infertility", "Regenerative medicine", "Premature ejaculation", "Implant surgery troubleshooting"],
-      ru: ["Мужское бесплодие", "Регенеративная медицина", "Преждевременная эякуляция", "Решение проблем имплантационной хирургии"],
-      kz: ["Ерлер бедеулігі", "Регенеративті медицина", "Ерте эякуляция", "Имплантациялық хирургиядағы күрделі жағдайлар"]
-    }
+    talks: [
+      { time: "14:00-14:15", speaker: "Ege Can Serefoglu", topic: "Male infertility: new and promising treatment options" },
+      { time: "14:15-14:30", speaker: "Mirzakarim Alchinbayev", topic: "Topic to be confirmed" },
+      { time: "14:30-14:45", speaker: "Sam Ward", topic: "Regenerative Medicine" },
+      { time: "14:45-15:00", speaker: "Bagdat Daukenov", topic: "Urethral Strictures: The Role of Different Buccal Graft Placement Techniques and Their Impact on Reconstruction Outcomes" },
+      { time: "15:00-15:15", speaker: "Ege Can Serefoglu", topic: "Surgical Treatment of Premature Ejaculation" },
+      { time: "15:15-15:30", speaker: "Sam Ward", topic: "Social Media and Men's Health" },
+      { time: "15:30-15:45", speaker: "Yerkebulan Gulmanov", topic: "Adult Hypospadias: Reconstructive, Sexual, Reproductive and Psychosocial Aspects of an Unresolved Problem" },
+      { time: "15:45-16:00", speaker: "Andrian Leontyev", topic: "Modern Diagnostics of Male Infertility" },
+      { time: "16:00-16:15", speaker: "Rustam Omarbayev", topic: "Comparative Efficacy and Safety of Intracavernosal PRP Therapy and Autologous Bone Marrow Mesenchymal Stem Cells in Moderate and Severe Erectile Dysfunction" },
+      { time: "16:15-16:30", speaker: "Pavel Kyzlasov", topic: "Troubleshooting in Implant Surgery" }
+    ]
   },
   {
     time: "13:45-15:45",
     room: { en: "Caspian Hall", ru: "Зал «Каспий»", kz: "«Каспий» залы" },
     title: { en: "Pediatric Urology Session", ru: "Секция «Детская урология»", kz: "Балалар урологиясы секциясы" },
     moderators: ["Ardak Ainakulov", "Gilvydas Verkauskas", "Alimzhan Kalimkulov"],
-    talks: {
-      en: ["Kidney transplantation in children", "Cryptorchidism", "Bladder disorders", "Pediatric urolithiasis"],
-      ru: ["Трансплантация почки у детей", "Крипторхизм", "Нарушения функции мочевого пузыря", "Мочекаменная болезнь у детей"],
-      kz: ["Балалардағы бүйрек трансплантациясы", "Крипторхизм", "Қуық функциясының бұзылыстары", "Балалардағы уролитиаз"]
-    }
+    talks: [
+      { time: "14:00-14:15", speaker: "Ardak Ainakulov", topic: "Kidney Transplantation into an Augmented Bladder in Children" },
+      { time: "14:15-14:30", speaker: "Gilvydas Verkauskas", topic: "Gonadotropins and testicular function in boys with cryptorchidism" },
+      { time: "14:30-14:45", speaker: "Temirlan Bagitzhanov", topic: "Differentiated Surgical Approach to Structural and Functional Bladder Disorders in Children" },
+      { time: "14:45-15:00", speaker: "Askar Taszhurekov", topic: "Surgical Management of Children with Exstrophy-Epispadias Complex" },
+      { time: "15:00-15:15", speaker: "Alimzhan Kalimkulov", topic: "Differentiated Approach to the Treatment of Pediatric Urolithiasis" },
+      { time: "15:15-15:30", speaker: "Asset Zhanabek", topic: "Super Mini-PCNL and RIRS FANS in Children" },
+      { time: "15:30-15:45", speaker: "Bauyrzhan Satanov", topic: "Obstructive Uropathies in Children: A Modern Perspective" },
+      { time: "15:45-16:00", speaker: "Gilvydas Verkauskas", topic: "Choice of videosurgery technique for pyeloureteroplasty" }
+    ]
   },
   {
-    time: "16:30-18:20",
+    time: "16:30-18:40",
     room: { en: "Aspan Hall", ru: "Зал «Аспан»", kz: "«Аспан» залы" },
-    title: { en: "Young Urologists Session", ru: "Секция молодых урологов", kz: "Жас урологтар секциясы" },
+    title: { en: "Young Urologists Session and Closing", ru: "Секция молодых урологов и закрытие", kz: "Жас урологтар секциясы және жабылу" },
     moderators: ["Gilvydas Verkauskas", "Wang Jianye", "Kemal Sarica", "Yongda Liu", "Sam Ward", "Ege Can Serefoglu"],
-    talks: {
-      en: ["11 presentations", "7 minutes presentation + 3 minutes discussion", "Best Young Urologist Presentation Award"],
-      ru: ["11 докладов", "7 минут доклад + 3 минуты обсуждение", "Награда за лучший доклад молодого уролога"],
-      kz: ["11 баяндама", "7 минут баяндама + 3 минут талқылау", "Жас урологтың үздік баяндамасы марапаты"]
-    }
+    talks: [
+      { time: "16:30-16:40", speaker: "Yerkebulan Mukhambetov", topic: "Fluid Dynamics in Endourology: Why Flow Matters" },
+      { time: "16:40-16:50", speaker: "Rabat Abdalim", topic: "Evolution of PCNL: Suction as an Essential Standard of Care" },
+      { time: "16:50-17:00", speaker: "Dinmukhammed Bekturgan", topic: "PCNL in the Treatment of Pediatric Urolithiasis" },
+      { time: "17:00-17:10", speaker: "Nailya Abdrashitova", topic: "XX Is Not Always Female: A Clinical Case" },
+      { time: "17:10-17:20", speaker: "Yerzhan Iskakov", topic: "A Rare Clinical Case in Outpatient Urology: Mondor's Disease" },
+      { time: "17:20-17:30", speaker: "Anuar Bazarbayev", topic: "Neurogenic Bladder Dysfunction in Children" },
+      { time: "17:30-17:40", speaker: "Amirkhan Telman", topic: "Endoscopic Correction of Vesicoureteral Reflux in Children" },
+      { time: "17:40-17:50", speaker: "Sagynbek Meldesh", topic: "Reconstructive Surgery for 46 XX DSD due to Congenital Adrenal Hyperplasia" },
+      { time: "17:50-18:00", speaker: "Bakhadyr Bereketov", topic: "Modern Surgical Technologies in the Treatment of Kidney Cancer with Renal Vein Tumor Thrombus" },
+      { time: "18:00-18:10", speaker: "Azamat Abdikamal", topic: "Robot-Assisted and Laparoscopic Surgery for Renal Tumors: Current Opportunities, Advantages and Limitations" },
+      { time: "18:10-18:20", speaker: "Asset Umirtayev", topic: "Surgical Treatment of Prostate Cancer: Current Opportunities and Future Perspectives" },
+      { time: "18:20-18:30", speaker: "Award Ceremony", topic: "Best Young Urologist Presentation Award" },
+      { time: "18:30-18:40", speaker: "Organizing Committee", topic: "Official Closing Ceremony" }
+    ]
   }
 ];
 
+export const sessions = programDetails.map((session) => ({
+  time: session.time,
+  room: session.room,
+  title: session.title,
+  moderators: session.moderators,
+  talks: {
+    en: session.talks.map((talk) => `${talk.time} · ${talk.speaker}: ${talk.topic}`),
+    ru: session.talks.map((talk) => `${talk.time} · ${talk.speaker}: ${talk.topic}`),
+    kz: session.talks.map((talk) => `${talk.time} · ${talk.speaker}: ${talk.topic}`)
+  }
+}));
+
+const officialFaculty = [
+  ["Timur Muratov", "Муратов Тимур Муратович", "Vice Minister of Healthcare of the Republic of Kazakhstan", "Вице-министр здравоохранения Республики Казахстан", "Қазақстан Республикасы Денсаулық сақтау вице-министрі", "official"],
+  ["Anar Turmukhambetova", "Турмухамбетова Анар Акылбековна", "Rector of Astana Medical University", "Ректор Медицинского университета Астана", "Астана медицина университетінің ректоры", "official"],
+  ["Ainur Tuleuova", "Тулеуова Айнур Сакеновна", "Head of Astana City Health Department", "Глава Управления здравоохранения г. Астана", "Астана қаласы Денсаулық сақтау басқармасының басшысы", "official"],
+  ["Mirzakarim Alchinbayev", "Алчинбаев Мирзакарим Каримович", "Chief Urologist of the Republic of Kazakhstan", "Главный уролог Республики Казахстан", "Қазақстан Республикасының бас урологы", "kazakhstan"]
+] as const;
+
 export const faculty = [
-  {
-    name: "Timur Muratov",
-    ruName: "Муратов Тимур Муратович",
-    role: {
-      en: "Vice Minister of Healthcare of the Republic of Kazakhstan",
-      ru: "Вице-министр здравоохранения Республики Казахстан",
-      kz: "Қазақстан Республикасы Денсаулық сақтау вице-министрі"
-    },
-    city: { en: "Kazakhstan", ru: "Казахстан", kz: "Қазақстан" },
-    topic: { en: "Welcome remarks", ru: "Приветственное слово", kz: "Құттықтау сөзі" },
-    group: "official"
-  },
-  {
-    name: "Anar Turmukhambetova",
-    ruName: "Турмухамбетова Анар Акылбековна",
-    role: { en: "Rector of Astana Medical University", ru: "Ректор Медицинского университета Астана", kz: "Астана медицина университетінің ректоры" },
-    city: { en: "Astana", ru: "Астана", kz: "Астана" },
-    topic: { en: "Academic welcome", ru: "Академическое приветствие", kz: "Академиялық құттықтау" },
-    group: "official"
-  },
-  {
-    name: "Ainur Tuleuova",
-    ruName: "Тулеуова Айнур Сакеновна",
-    role: { en: "Head of Astana City Health Department", ru: "Глава Управления здравоохранения г. Астана", kz: "Астана қаласы Денсаулық сақтау басқармасының басшысы" },
-    city: { en: "Astana", ru: "Астана", kz: "Астана" },
-    topic: { en: "Healthcare leadership", ru: "Развитие здравоохранения", kz: "Денсаулық сақтауды дамыту" },
-    group: "official"
-  },
-  {
-    name: "Mirzakarim Alchinbayev",
-    ruName: "Алчинбаев Мирзакарим Каримович",
-    role: { en: "Chief Urologist of the Republic of Kazakhstan", ru: "Главный уролог Республики Казахстан", kz: "Қазақстан Республикасының бас урологы" },
-    city: { en: "Kazakhstan", ru: "Казахстан", kz: "Қазақстан" },
-    topic: { en: "Modern urology in Kazakhstan", ru: "Современная урология Казахстана", kz: "Қазақстандағы заманауи урология" },
-    group: "kazakhstan"
-  },
+  ...officialFaculty.map(([name, ruName, roleEn, roleRu, roleKz, group]) => ({
+    name,
+    ruName,
+    role: { en: roleEn, ru: roleRu, kz: roleKz },
+    city: { en: group === "official" ? "Astana" : "Kazakhstan", ru: group === "official" ? "Астана" : "Казахстан", kz: group === "official" ? "Астана" : "Қазақстан" },
+    topic: { en: "Plenum participation", ru: "Участие в пленуме", kz: "Пленумға қатысу" },
+    group
+  })),
   ...[
-    "Chingis Baimenov",
-    "Khusan Umurzakov",
-    "Anvar Davranov",
-    "Bulat Shalekenov",
-    "Kasymkhan Sultanbekov",
-    "Ardak Ainakulov",
-    "Alimzhan Kalimkulov"
+    "Chingis Baimenov", "Khusan Umurzakov", "Anvar Davranov", "Bulat Shalekenov", "Kasymkhan Sultanbekov",
+    "Ardak Ainakulov", "Alimzhan Kalimkulov", "Ali Talyshinskii", "Asylan Nurgaliyev", "Zhaslan Amirzhanov"
   ].map((name) => ({
     name,
     ruName: name,

@@ -2,7 +2,7 @@
 
 Modern responsive trilingual conference website for **UROPLENUM 2026**, the Plenum of Urologists of Kazakhstan.
 
-Production URL target: `https://uroplenum.vercel.app`
+Production URL target: `https://uroplenum2026.vercel.app`
 
 ## Pages
 
@@ -45,4 +45,4 @@ To publish:
 1. Push the project to GitHub.
 2. In Vercel, import the GitHub repository.
 3. Use the default build command: `npm run build`.
-4. Set the production domain to `uroplenum.vercel.app` in Vercel.
+4. Set the production domain to `uroplenum2026.vercel.app` in Vercel.

@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://uroplenum.vercel.app"),
+  metadataBase: new URL("https://uroplenum2026.vercel.app"),
   title: "UROPLENUM 2026 | Plenum of Urologists of Kazakhstan",
   description:
     "A trilingual conference website for UROPLENUM 2026 at QazExpoCongress, Astana."

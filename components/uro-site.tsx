@@ -8,7 +8,6 @@ import {
   Building2,
   CalendarDays,
   CheckCircle2,
-  Globe2,
   Mail,
   MapPin,
   Menu,
@@ -21,10 +20,12 @@ import {
   copy,
   faculty,
   langs,
+  mapUrl,
   nav,
   overview,
   pagePath,
-  sessions,
+  programDetails,
+  sponsorLogos,
   venueFacts,
   venueImage,
   type Lang,
@@ -204,7 +205,7 @@ function HomePage({ lang }: { lang: Lang }) {
               ["1", lang === "en" ? "Congress day" : lang === "ru" ? "День пленума" : "Пленум күні"],
               ["5", lang === "en" ? "Scientific tracks" : lang === "ru" ? "Научных треков" : "Ғылыми трек"],
               ["20+", lang === "en" ? "Faculty members" : lang === "ru" ? "Спикеров" : "Спикер"],
-              ["Astana", lang === "en" ? "Host city" : lang === "ru" ? "Город проведения" : "Өтетін қала"]
+              [lang === "en" ? "Astana" : "Астана", lang === "en" ? "Host city" : lang === "ru" ? "Город проведения" : "Өтетін қала"]
             ].map(([value, label]) => (
               <div key={label} className="surface-card p-6">
                 <div className="text-4xl font-black tracking-tight text-ink">{value}</div>
@@ -231,10 +232,10 @@ function HomePage({ lang }: { lang: Lang }) {
       <section className="section-pad bg-mist">
         <div className="site-shell">
           <SectionTitle eyebrow={t.organizers} title={t.organizers} text={t.organizersText} />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {["Ministry of Healthcare", "Astana Medical University", "Urology Society", "Clinical Partners"].map((logo) => (
-              <div key={logo} className="surface-card flex h-28 items-center justify-center p-6 text-center">
-                <span className="text-sm font-black uppercase tracking-[0.18em] text-slate">{logo}</span>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {sponsorLogos.map((logo) => (
+              <div key={logo.src} className="surface-card flex h-36 items-center justify-center bg-white p-6 text-center">
+                <img src={logo.src} alt={logo.alt} className="max-h-24 max-w-full object-contain" />
               </div>
             ))}
           </div>
@@ -274,7 +275,7 @@ function ProgramPage({ lang }: { lang: Lang }) {
           </div>
 
           <div className="mt-12 grid gap-5 lg:grid-cols-2">
-            {sessions.map((session) => (
+            {programDetails.map((session) => (
               <ProgramCard key={`${session.time}-${session.title.en}`} lang={lang} session={session} />
             ))}
           </div>
@@ -332,7 +333,7 @@ function VenuePage({ lang }: { lang: Lang }) {
         subtitle="Congress-center QazExpoCongress"
         text={t.venueIntro}
         eyebrow={nav[lang].venue}
-        meta="55/13 Mangilik El Avenue | Astana"
+        meta={lang === "en" ? "12 Heydar Aliyev Street | Astana" : lang === "ru" ? "ул. Гейдар Алиева 12 | Астана" : "Гейдар Алиев көшесі, 12 | Астана"}
         compact
         venue
       />
@@ -356,6 +357,14 @@ function VenuePage({ lang }: { lang: Lang }) {
                 <MapPin className="mx-auto h-10 w-10 text-gold-600" />
                 <h2 className="mt-4 text-2xl font-black">{t.venueTitle}</h2>
                 <p className="mt-3 text-sm leading-6 text-slate">{t.venueIntro}</p>
+                <a
+                  href={mapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex items-center justify-center rounded-lg bg-gold-500 px-4 py-3 text-sm font-black text-ink"
+                >
+                  {t.map}
+                </a>
               </div>
             </div>
           </div>
@@ -409,17 +418,15 @@ function Hero({
           <p className="mt-4 max-w-full whitespace-normal break-words text-xl font-bold text-white/88 sm:text-3xl" style={{ overflowWrap: "anywhere" }}>
             {subtitle}
           </p>
-          <p className="mt-6 max-w-3xl whitespace-normal break-words text-base leading-8 text-white/72 sm:text-lg" style={{ overflowWrap: "anywhere" }}>
-            {text}
-          </p>
+          {text && (
+            <p className="mt-6 max-w-3xl whitespace-normal break-words text-base leading-8 text-white/72 sm:text-lg" style={{ overflowWrap: "anywhere" }}>
+              {text}
+            </p>
+          )}
           <div className="mt-7 flex flex-wrap items-center gap-3 text-sm font-bold text-white/82">
             <span className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-3">
               <CalendarDays className="h-4 w-4 text-gold-500" />
               {meta}
-            </span>
-            <span className="inline-flex items-center gap-2 rounded-lg bg-white/10 px-4 py-3">
-              <Globe2 className="h-4 w-4 text-gold-500" />
-              {copy[lang].site}
             </span>
           </div>
           {(primary || secondary) && (
@@ -459,7 +466,7 @@ function VenueFeature({ lang }: { lang: Lang }) {
   );
 }
 
-function ProgramCard({ lang, session }: { lang: Lang; session: (typeof sessions)[number] }) {
+function ProgramCard({ lang, session }: { lang: Lang; session: (typeof programDetails)[number] }) {
   return (
     <article className="surface-card p-6 transition hover:-translate-y-1 hover:shadow-soft">
       <div className="flex flex-wrap items-center gap-3">
@@ -471,14 +478,15 @@ function ProgramCard({ lang, session }: { lang: Lang; session: (typeof sessions)
         {lang === "en" ? "Moderators" : lang === "ru" ? "Модераторы" : "Модераторлар"}
       </p>
       <p className="mt-2 text-sm leading-6 text-slate">{session.moderators.join(", ")}</p>
-      <ul className="mt-5 grid gap-2">
-        {session.talks[lang].map((talk) => (
-          <li key={talk} className="flex gap-2 text-sm leading-6 text-slate">
-            <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-gold-600" />
-            {talk}
-          </li>
+      <div className="mt-5 grid gap-3">
+        {session.talks.map((talk) => (
+          <div key={`${talk.time}-${talk.speaker}-${talk.topic}`} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+            <div className="text-sm font-black text-brand-700">{talk.time}</div>
+            <div className="mt-1 font-black text-ink">{talk.speaker}</div>
+            <div className="mt-2 text-sm leading-6 text-slate">{talk.topic}</div>
+          </div>
         ))}
-      </ul>
+      </div>
     </article>
   );
 }
