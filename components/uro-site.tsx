@@ -492,7 +492,7 @@ function ProgramCard({ lang, session }: { lang: Lang; session: (typeof programDe
 }
 
 function FacultyCard({ lang, person, index }: { lang: Lang; person: (typeof faculty)[number]; index: number }) {
-  const displayName = lang === "ru" && person.ruName ? person.ruName : person.name;
+  const displayName = lang === "ru" ? person.ruName : lang === "kz" ? person.kzName : person.name;
   const initials = useMemo(
     () =>
       displayName

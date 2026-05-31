@@ -330,6 +330,7 @@ export const faculty = [
   {
     name: "Timur Muratov",
     ruName: "Муратов Тимур Муратович",
+    kzName: "Мұратов Тимур Мұратұлы",
     role: text("Vice Minister of Healthcare of the Republic of Kazakhstan", "Вице-министр здравоохранения Республики Казахстан", "Қазақстан Республикасы Денсаулық сақтау вице-министрі"),
     city: text("Astana", "Астана", "Астана"),
     topic: text("Welcome remarks", "Приветственное слово", "Құттықтау сөзі"),
@@ -338,6 +339,7 @@ export const faculty = [
   {
     name: "Anar Turmukhambetova",
     ruName: "Турмухамбетова Анар Акылбековна",
+    kzName: "Тұрмұхамбетова Анар Ақылбекқызы",
     role: text("Rector of Astana Medical University", "Ректор Медицинского университета Астана", "Астана медицина университетінің ректоры"),
     city: text("Astana", "Астана", "Астана"),
     topic: text("Academic welcome", "Академическое приветствие", "Академиялық құттықтау"),
@@ -346,6 +348,7 @@ export const faculty = [
   {
     name: "Ainur Tuleuova",
     ruName: "Тулеуова Айнур Сакеновна",
+    kzName: "Төлеуова Айнұр Сәкенқызы",
     role: text("Head of Astana City Health Department", "Глава Управления здравоохранения г. Астана", "Астана қаласы Денсаулық сақтау басқармасының басшысы"),
     city: text("Astana", "Астана", "Астана"),
     topic: text("Healthcare leadership", "Развитие здравоохранения", "Денсаулық сақтауды дамыту"),
@@ -354,25 +357,44 @@ export const faculty = [
   {
     name: "Mirzakarim Alchinbayev",
     ruName: "Алчинбаев Мирзакарим Каримович",
+    kzName: "Алчинбаев Мирзакарим Каримұлы",
     role: text("Chief Urologist of the Republic of Kazakhstan", "Главный уролог Республики Казахстан", "Қазақстан Республикасының бас урологы"),
     city: text("Kazakhstan", "Казахстан", "Қазақстан"),
     topic: text("Modern urology in Kazakhstan", "Современная урология Казахстана", "Қазақстандағы заманауи урология"),
     group: "kazakhstan"
   },
   ...[
-    "Chingis Baimenov", "Khusan Umurzakov", "Anvar Davranov", "Bulat Shalekenov", "Kasymkhan Sultanbekov",
-    "Ardak Ainakulov", "Alimzhan Kalimkulov", "Ali Talyshinskii", "Asylan Nurgaliyev", "Zhaslan Amirzhanov"
-  ].map((name) => ({
+    ["Chingis Baimenov", "Байменов Чингис Болатович", "Байменов Шыңғыс Болатұлы"],
+    ["Khusan Umurzakov", "Умурзаков Хусан Талипбаевич", "Умурзаков Хусан Талипбайұлы"],
+    ["Anvar Davranov", "Давранов Анвар Жангирович", "Давранов Анвар Жангирұлы"],
+    ["Bulat Shalekenov", "Шалекенов Булат Уахитович", "Шалекенов Болат Уахитұлы"],
+    ["Kasymkhan Sultanbekov", "Султанбеков Касымхан Адылханович", "Сұлтанбеков Қасымхан Әділханұлы"],
+    ["Ardak Ainakulov", "Айнакулов Ардак Жаксылыкович", "Айнакулов Ардақ Жақсылықұлы"],
+    ["Alimzhan Kalimkulov", "Калимкулов Алимжан Мейрамбекович", "Қалимқұлов Әлімжан Мейрамбекұлы"],
+    ["Ali Talyshinskii", "Талышинский Али Эльманович", "Талышинский Али Эльманұлы"],
+    ["Asylan Nurgaliyev", "Нургалиев Асылан Асылбекович", "Нұрғалиев Асылан Асылбекұлы"],
+    ["Zhaslan Amirzhanov", "Амиржанов Жаслан Нурланович", "Әміржанов Жаслан Нұрланұлы"]
+  ].map(([name, ruName, kzName]) => ({
     name,
-    ruName: name,
+    ruName,
+    kzName,
     role: text("Kazakhstan Faculty / Moderator", "Казахстанский спикер / модератор", "Қазақстандық спикер / модератор"),
     city: text("Kazakhstan", "Казахстан", "Қазақстан"),
     topic: text("Scientific session", "Научная секция", "Ғылыми секция"),
     group: "kazakhstan" as const
   })),
-  ...["Yongda Liu", "Kemal Sarica", "Evgeny Bezrukov", "Ege Can Serefoglu", "Gilvydas Verkauskas", "Wang Jianye", "Sam Ward"].map((name) => ({
+  ...[
+    ["Yongda Liu", "Yongda Liu", "Yongda Liu"],
+    ["Kemal Sarica", "Kemal Sarica", "Kemal Sarica"],
+    ["Evgeny Bezrukov", "Безруков Евгений Алексеевич", "Безруков Евгений Алексеевич"],
+    ["Ege Can Serefoglu", "Ege Can Serefoglu", "Ege Can Serefoglu"],
+    ["Gilvydas Verkauskas", "Gilvydas Verkauskas", "Gilvydas Verkauskas"],
+    ["Wang Jianye", "Wang Jianye", "Wang Jianye"],
+    ["Sam Ward", "Sam Ward", "Sam Ward"]
+  ].map(([name, ruName, kzName]) => ({
     name,
-    ruName: name,
+    ruName,
+    kzName,
     role: text("International Faculty", "Международный спикер", "Халықаралық спикер"),
     city: text("International", "Международный эксперт", "Халықаралық сарапшы"),
     topic: text("Specialty lecture / moderation", "Профильный доклад / модерация", "Бейінді баяндама / модерация"),
@@ -381,6 +403,7 @@ export const faculty = [
 ] satisfies {
   name: string;
   ruName: string;
+  kzName: string;
   role: LocalText;
   city: LocalText;
   topic: LocalText;
