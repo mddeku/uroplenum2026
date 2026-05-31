@@ -86,7 +86,7 @@ function Navbar({
   const t = copy[lang];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/88 text-white shadow-[0_14px_42px_rgba(3,15,32,0.22)] backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/12 bg-[rgba(7,26,51,0.94)] text-white shadow-[0_14px_42px_rgba(3,15,32,0.28)] backdrop-blur-xl">
       <div className="site-shell">
         <div className="flex h-20 items-center justify-between gap-4">
           <Link
@@ -109,7 +109,7 @@ function Navbar({
                 key={key}
                 href={`${pagePath[key]}?lang=${lang}`}
                 className={`rounded-lg px-4 py-2 text-sm font-semibold transition ${
-                  key === page ? "bg-white text-ink shadow-[0_10px_24px_rgba(255,255,255,0.12)]" : "text-white/72 hover:bg-white/10 hover:text-white"
+                  key === page ? "bg-white text-ink shadow-[0_10px_24px_rgba(255,255,255,0.12)]" : "bg-white/5 text-white hover:bg-white/12 hover:text-white"
                 }`}
               >
                 {nav[lang][key]}
@@ -124,7 +124,7 @@ function Navbar({
                 type="button"
                 onClick={() => setLanguage(item.id)}
                 className={`rounded-lg px-3 py-2 text-xs font-bold transition ${
-                  lang === item.id ? "bg-gold-500 text-ink shadow-[0_10px_24px_rgba(199,161,74,0.22)]" : "bg-white/8 text-white/70 hover:bg-white/14"
+                  lang === item.id ? "bg-gold-500 text-ink shadow-[0_10px_24px_rgba(199,161,74,0.22)]" : "bg-white/10 text-white hover:bg-white/15"
                 }`}
                 aria-label={item.name}
               >
