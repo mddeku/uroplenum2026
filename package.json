@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build --webpack",
     "build:pages": "next build --webpack",
     "prepare:upload": "powershell -ExecutionPolicy Bypass -File scripts/prepare-github-pages-upload.ps1",
-    "start": "next dev",
+    "start": "next dev --webpack",
     "lint": "next lint"
   },
   "dependencies": {
