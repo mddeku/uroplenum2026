@@ -480,10 +480,10 @@ function ProgramCard({ lang, session }: { lang: Lang; session: (typeof programDe
       <p className="mt-2 text-sm leading-6 text-slate">{session.moderators.join(", ")}</p>
       <div className="mt-5 grid gap-3">
         {session.talks.map((talk) => (
-          <div key={`${talk.time}-${talk.speaker}-${talk.topic}`} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
+          <div key={`${talk.time}-${talk.speaker.en}-${talk.topic.en}`} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
             <div className="text-sm font-black text-brand-700">{talk.time}</div>
-            <div className="mt-1 font-black text-ink">{talk.speaker}</div>
-            <div className="mt-2 text-sm leading-6 text-slate">{talk.topic}</div>
+            <div className="mt-1 font-black text-ink">{talk.speaker[lang]}</div>
+            <div className="mt-2 text-sm leading-6 text-slate">{talk.topic[lang]}</div>
           </div>
         ))}
       </div>
