@@ -86,6 +86,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/images/uroplenum-icon-32.png",
     apple: "/images/uroplenum-icon-180.png"
+  },
+  verification: {
+    google: "B6sptqMch0Mg0Y73j0FSs2zaa1qZ5XdhWor2fNT-7jA"
   }
 };
 
