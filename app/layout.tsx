@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://uroplenum2026.vercel.app"),
+  metadataBase: new URL("https://uroplenum.com"),
   title: {
     default: "UROPLENUM 2026 | Plenum of Urologists of Kazakhstan",
     template: "%s | UROPLENUM 2026"
@@ -24,7 +24,9 @@ export const metadata: Metadata = {
     "UROPLENUM 2026 is the Plenum of Urologists of Kazakhstan, a national scientific and educational meeting at QazExpoCongress in Astana on July 3, 2026.",
   keywords: [
     "UROPLENUM 2026",
+    "uroplenum.com",
     "Uroplenum",
+    "Uroplenum Kazakhstan",
     "Plenum of Urologists of Kazakhstan",
     "Kazakhstan urology congress",
     "urology conference Astana",
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://uroplenum2026.vercel.app",
+    url: "https://uroplenum.com",
     siteName: "UROPLENUM 2026",
     title: "UROPLENUM 2026 | Plenum of Urologists of Kazakhstan",
     description:
@@ -102,8 +104,8 @@ const eventJsonLd = {
   endDate: "2026-07-03",
   eventStatus: "https://schema.org/EventScheduled",
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-  url: "https://uroplenum2026.vercel.app",
-  image: ["https://uroplenum2026.vercel.app/images/uroplenum-hero.png"],
+  url: "https://uroplenum.com",
+  image: ["https://uroplenum.com/images/uroplenum-hero.png"],
   location: {
     "@type": "Place",
     name: "Congress-center QazExpoCongress",
@@ -118,7 +120,7 @@ const eventJsonLd = {
     "@type": "Organization",
     name: "UROPLENUM 2026 Organizing Committee",
     email: "uroplenum2026@mail.ru",
-    url: "https://uroplenum2026.vercel.app"
+    url: "https://uroplenum.com"
   }
 };
 
