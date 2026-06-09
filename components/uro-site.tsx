@@ -86,7 +86,7 @@ function Navbar({
   const t = copy[lang];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/12 bg-[rgba(7,26,51,0.94)] text-white shadow-[0_14px_42px_rgba(3,15,32,0.28)] backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-white/12 bg-[#061e3d] text-white shadow-[0_14px_42px_rgba(3,15,32,0.28)]">
       <div className="site-shell">
         <div className="flex h-20 items-center justify-between gap-4">
           <Link
@@ -709,7 +709,7 @@ function Footer({ lang }: { lang: Lang }) {
       <div className="site-shell py-10">
         <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <div className="inline-flex rounded-lg bg-ink px-3 py-2">
+            <div className="inline-flex rounded-lg bg-[#061e3d] px-3 py-2">
               <img src="/images/uroplenum-site-logo.png" alt="UROPLENUM 2026 Kazakhstan" className="h-12 w-auto max-w-[260px] object-contain" />
             </div>
             <div className="mt-2 text-sm text-slate">{t.congress}</div>
