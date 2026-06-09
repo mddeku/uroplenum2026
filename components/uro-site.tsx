@@ -97,12 +97,7 @@ function Navbar({
             <img
               src="/images/uroplenum-site-logo.png"
               alt="UROPLENUM 2026 Kazakhstan"
-              className="hidden h-14 w-auto max-w-[300px] object-contain sm:block"
-            />
-            <img
-              src="/images/uroplenum-site-mark.png"
-              alt="UROPLENUM 2026 Kazakhstan"
-              className="block h-12 w-12 rounded-lg object-cover sm:hidden"
+              className="h-12 w-auto max-w-[210px] object-contain sm:h-14 sm:max-w-[300px]"
             />
           </Link>
 
