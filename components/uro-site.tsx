@@ -237,7 +237,7 @@ function HomePage({ lang }: { lang: Lang }) {
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {sponsorLogos.map((logo) => (
               <div key={logo.src} className="sponsor-tile surface-card flex h-36 items-center justify-center bg-white p-6 text-center">
-                <img src={logo.src} alt={logo.alt} className="max-h-24 max-w-full object-contain" />
+                <SponsorLogo src={logo.src} alt={logo.alt} />
               </div>
             ))}
           </div>
@@ -577,6 +577,23 @@ function InfoCard({ icon: Icon, title, text }: { icon: typeof Award; title: stri
       <p className="mt-3 text-sm leading-7 text-slate">{text}</p>
     </article>
   );
+}
+
+function SponsorLogo({ src, alt }: { src: string; alt: string }) {
+  if (src.endsWith(".pdf")) {
+    return (
+      <object
+        data={`${src}#toolbar=0&navpanes=0&scrollbar=0`}
+        type="application/pdf"
+        aria-label={alt}
+        className="h-28 w-full overflow-hidden rounded bg-white"
+      >
+        <span className="text-sm font-black text-brand-700">{alt}</span>
+      </object>
+    );
+  }
+
+  return <img src={src} alt={alt} className="max-h-24 max-w-full object-contain" />;
 }
 
 function SectionTitle({
