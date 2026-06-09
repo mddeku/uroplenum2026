@@ -6,3 +6,5 @@ out
 storage/db.json
 storage/uploads
 npm-debug.log*
+
+.vercel
