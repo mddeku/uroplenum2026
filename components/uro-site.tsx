@@ -98,7 +98,7 @@ function Navbar({
               <KidneyIcon className="h-7 w-7" />
             </span>
             <span className="min-w-0">
-              <span className="block truncate text-lg font-black tracking-tight">{t.brand}</span>
+              <span className="brand-wordmark block truncate text-lg">{t.brand}</span>
               <span className="block truncate text-xs font-bold text-gold-500">Kazakhstan</span>
             </span>
           </Link>
@@ -401,13 +401,19 @@ function Hero({
   compact?: boolean;
   venue?: boolean;
 }) {
-  const image = venue ? venueImage : "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1600&q=80";
+  const image = venue ? venueImage : "/images/uroplenum-hero.png";
+  const imageTone = venue
+    ? "opacity-35"
+    : "opacity-100";
+  const overlay = venue
+    ? "bg-[linear-gradient(115deg,rgba(7,26,51,0.98),rgba(10,31,68,0.86)_48%,rgba(13,74,121,0.62))]"
+    : "bg-[linear-gradient(115deg,rgba(7,26,51,0.34),rgba(10,31,68,0.22)_42%,rgba(13,74,121,0.08))]";
 
   return (
     <section className={`hero-stage relative overflow-hidden bg-ink text-white ${compact ? "py-20 sm:py-24" : "py-20 sm:py-28 lg:py-32"}`}>
       <div className="absolute inset-0">
-        <img src={image} alt="" className="hero-image h-full w-full object-cover opacity-28" />
-        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(7,26,51,0.98),rgba(10,31,68,0.86)_48%,rgba(13,74,121,0.62))]" />
+        <img src={image} alt="" className={`hero-image h-full w-full object-cover ${imageTone}`} />
+        <div className={`absolute inset-0 ${overlay}`} />
         <div className="motion-grid absolute inset-0" />
         <div className="motion-scan absolute inset-x-0 top-0 h-full" />
       </div>
@@ -417,7 +423,12 @@ function Hero({
           <div className="fine-label max-w-[320px] whitespace-normal break-words text-gold-500 tracking-[0.16em] sm:max-w-full sm:tracking-[0.22em]" style={{ overflowWrap: "anywhere" }}>
             {eyebrow}
           </div>
-          <h1 className="mt-5 max-w-full whitespace-normal break-words text-3xl font-black tracking-tight sm:text-6xl lg:text-7xl" style={{ overflowWrap: "anywhere" }}>
+          <h1
+            className={`mt-5 max-w-full whitespace-normal break-words text-3xl font-black tracking-tight sm:text-6xl lg:text-7xl ${
+              title === copy[lang].brand ? "brand-wordmark" : ""
+            }`}
+            style={{ overflowWrap: "anywhere" }}
+          >
             {title}
           </h1>
           <p className="mt-4 max-w-full whitespace-normal break-words text-xl font-bold text-white/88 sm:text-3xl" style={{ overflowWrap: "anywhere" }}>
@@ -666,7 +677,7 @@ function Footer({ lang }: { lang: Lang }) {
       <div className="site-shell py-10">
         <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <div className="text-xl font-black text-ink">{t.brand}</div>
+            <div className="brand-wordmark text-xl text-ink">{t.brand}</div>
             <div className="mt-2 text-sm text-slate">{t.congress}</div>
             <div className="mt-2 text-sm font-semibold text-slate">{t.email}</div>
           </div>
