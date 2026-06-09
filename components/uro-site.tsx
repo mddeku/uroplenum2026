@@ -94,13 +94,16 @@ function Navbar({
             className="flex min-w-0 max-w-[calc(100%-3.75rem)] items-center gap-3 lg:max-w-none"
             onClick={() => setMenuOpen(false)}
           >
-            <span className="logo-mark flex h-11 w-11 items-center justify-center rounded-lg bg-gold-500 text-ink">
-              <KidneyIcon className="h-7 w-7" />
-            </span>
-            <span className="min-w-0">
-              <span className="brand-wordmark block truncate text-lg">{t.brand}</span>
-              <span className="block truncate text-xs font-bold text-gold-500">Kazakhstan</span>
-            </span>
+            <img
+              src="/images/uroplenum-site-logo.png"
+              alt="UROPLENUM 2026 Kazakhstan"
+              className="hidden h-14 w-auto max-w-[300px] object-contain sm:block"
+            />
+            <img
+              src="/images/uroplenum-site-mark.png"
+              alt="UROPLENUM 2026 Kazakhstan"
+              className="block h-12 w-12 rounded-lg object-cover sm:hidden"
+            />
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex">
@@ -706,7 +709,9 @@ function Footer({ lang }: { lang: Lang }) {
       <div className="site-shell py-10">
         <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
-            <div className="brand-wordmark text-xl text-ink">{t.brand}</div>
+            <div className="inline-flex rounded-lg bg-ink px-3 py-2">
+              <img src="/images/uroplenum-site-logo.png" alt="UROPLENUM 2026 Kazakhstan" className="h-12 w-auto max-w-[260px] object-contain" />
+            </div>
             <div className="mt-2 text-sm text-slate">{t.congress}</div>
             <div className="mt-2 text-sm font-semibold text-slate">{t.email}</div>
           </div>

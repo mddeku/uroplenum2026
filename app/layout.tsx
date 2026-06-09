@@ -18,7 +18,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://uroplenum2026.vercel.app"),
   title: "UROPLENUM 2026 | Plenum of Urologists of Kazakhstan",
   description:
-    "A trilingual conference website for UROPLENUM 2026 at QazExpoCongress, Astana."
+    "A trilingual conference website for UROPLENUM 2026 at QazExpoCongress, Astana.",
+  icons: {
+    icon: "/images/uroplenum-icon-32.png",
+    apple: "/images/uroplenum-icon-180.png"
+  }
 };
 
 export default function RootLayout({
