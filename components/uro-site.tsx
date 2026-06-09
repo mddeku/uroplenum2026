@@ -580,16 +580,28 @@ function InfoCard({ icon: Icon, title, text }: { icon: typeof Award; title: stri
 }
 
 function SponsorLogo({ src, alt }: { src: string; alt: string }) {
-  if (src.endsWith(".pdf")) {
+  if (alt === "AOQa") {
     return (
-      <object
-        data={`${src}#toolbar=0&navpanes=0&scrollbar=0`}
-        type="application/pdf"
-        aria-label={alt}
-        className="h-28 w-full overflow-hidden rounded bg-white"
-      >
-        <span className="text-sm font-black text-brand-700">{alt}</span>
-      </object>
+      <div className="flex h-full w-full flex-col items-center justify-center gap-2" aria-label={alt}>
+        <div className="font-sans text-4xl font-black tracking-tight">
+          <span className="text-[#39afd8]">AO</span>
+          <span className="text-[#cf1f35]">Qa</span>
+        </div>
+        <div className="max-w-[220px] text-center text-[11px] font-bold uppercase tracking-[0.12em] text-slate">
+          Ассоциация онкоурологов Казахстана
+        </div>
+      </div>
+    );
+  }
+
+  if (alt === "Alkaloid") {
+    return (
+      <div className="flex h-full w-full flex-col items-center justify-center gap-2" aria-label={alt}>
+        <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#2d2f87] text-[#2d2f87]">
+          <span className="font-sans text-2xl font-black">A</span>
+        </div>
+        <div className="font-sans text-xl font-black uppercase tracking-[0.08em] text-[#2d2f87]">Alkaloid</div>
+      </div>
     );
   }
 
