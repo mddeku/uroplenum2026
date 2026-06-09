@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type FormEvent, type HTMLAttributes } from "react";
 import {
   ArrowRight,
   Award,
@@ -14,7 +14,9 @@ import {
   Mic2,
   MoveUpRight,
   Navigation,
+  Send,
   Sparkles,
+  UserPlus,
   UsersRound,
   X
 } from "lucide-react";
@@ -35,8 +37,71 @@ import {
 } from "@/lib/uroplenum-data";
 
 const pageKeys: PageKey[] = ["home", "program", "faculty", "venue"];
+type SitePageKey = PageKey | "registration";
 
-export function UroSitePage({ page }: { page: PageKey }) {
+const registrationCloseAt = Date.parse("2026-07-03T00:00:00+05:00");
+
+const registrationText = {
+  en: {
+    nav: "Register",
+    title: "Participant Registration",
+    subtitle: "Registration is open until July 2, 2026",
+    intro: "Please complete all required fields to register for UROPLENUM 2026.",
+    closedTitle: "Registration is closed",
+    closedText: "Participant registration closed after July 2, 2026.",
+    fullName: "Full name",
+    iin: "IIN",
+    workplace: "Place of work",
+    phone: "Phone number",
+    submit: "Submit registration",
+    submitting: "Submitting...",
+    success: "Registration submitted successfully.",
+    required: "Please fill in all required fields.",
+    iinError: "IIN must contain 12 digits.",
+    error: "Registration could not be submitted. Please try again later.",
+    note: "All fields are required."
+  },
+  ru: {
+    nav: "Регистрация",
+    title: "Регистрация участников",
+    subtitle: "Регистрация открыта до 2 июля 2026 года",
+    intro: "Заполните все обязательные поля для регистрации на UROPLENUM 2026.",
+    closedTitle: "Регистрация закрыта",
+    closedText: "Регистрация участников закрыта после 2 июля 2026 года.",
+    fullName: "ФИО",
+    iin: "ИИН",
+    workplace: "Место работы",
+    phone: "Номер телефона",
+    submit: "Отправить регистрацию",
+    submitting: "Отправка...",
+    success: "Регистрация успешно отправлена.",
+    required: "Пожалуйста, заполните все обязательные поля.",
+    iinError: "ИИН должен содержать 12 цифр.",
+    error: "Не удалось отправить регистрацию. Попробуйте позже.",
+    note: "Все поля обязательны к заполнению."
+  },
+  kz: {
+    nav: "Тіркеу",
+    title: "Қатысушыларды тіркеу",
+    subtitle: "Тіркеу 2026 жылғы 2 шілдеге дейін ашық",
+    intro: "UROPLENUM 2026 қатысу үшін барлық міндетті өрістерді толтырыңыз.",
+    closedTitle: "Тіркеу жабылды",
+    closedText: "Қатысушыларды тіркеу 2026 жылғы 2 шілдеден кейін жабылды.",
+    fullName: "Т.А.Ә.",
+    iin: "ЖСН",
+    workplace: "Жұмыс орны",
+    phone: "Телефон нөмірі",
+    submit: "Тіркеуді жіберу",
+    submitting: "Жіберілуде...",
+    success: "Тіркеу сәтті жіберілді.",
+    required: "Барлық міндетті өрістерді толтырыңыз.",
+    iinError: "ЖСН 12 цифрдан тұруы керек.",
+    error: "Тіркеуді жіберу мүмкін болмады. Кейінірек қайталап көріңіз.",
+    note: "Барлық өрістер міндетті."
+  }
+} satisfies Record<Lang, Record<string, string>>;
+
+export function UroSitePage({ page }: { page: SitePageKey }) {
   const [lang, setLang] = useState<Lang>("en");
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -65,6 +130,7 @@ export function UroSitePage({ page }: { page: PageKey }) {
       {page === "program" && <ProgramPage lang={lang} />}
       {page === "faculty" && <FacultyPage lang={lang} />}
       {page === "venue" && <VenuePage lang={lang} />}
+      {page === "registration" && <RegistrationPage lang={lang} />}
       <Footer lang={lang} />
     </div>
   );
@@ -77,13 +143,14 @@ function Navbar({
   setMenuOpen,
   setLanguage
 }: {
-  page: PageKey;
+  page: SitePageKey;
   lang: Lang;
   menuOpen: boolean;
   setMenuOpen: (value: boolean) => void;
   setLanguage: (lang: Lang) => void;
 }) {
   const t = copy[lang];
+  const rt = registrationText[lang];
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/12 bg-[#061e3d] text-white shadow-[0_14px_42px_rgba(3,15,32,0.28)]">
@@ -116,6 +183,15 @@ function Navbar({
           </nav>
 
           <div className="hidden items-center gap-2 lg:flex">
+            <Link
+              href={`/registration?lang=${lang}`}
+              className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-black transition ${
+                page === "registration" ? "bg-gold-500 text-ink" : "bg-gold-500/90 text-ink hover:bg-gold-500"
+              }`}
+            >
+              <UserPlus className="h-4 w-4" />
+              {rt.nav}
+            </Link>
             {langs.map((item) => (
               <button
                 key={item.id}
@@ -155,6 +231,15 @@ function Navbar({
                 {nav[lang][key]}
               </Link>
             ))}
+            <Link
+              href={`/registration?lang=${lang}`}
+              onClick={() => setMenuOpen(false)}
+              className={`rounded-lg px-4 py-3 text-sm font-black ${
+                page === "registration" ? "bg-gold-500 text-ink" : "bg-gold-500/90 text-ink"
+              }`}
+            >
+              {rt.nav}
+            </Link>
             <div className="flex gap-2 pt-2">
               {langs.map((item) => (
                 <button
@@ -373,6 +458,179 @@ function VenuePage({ lang }: { lang: Lang }) {
 
       <ContactBand lang={lang} />
     </>
+  );
+}
+
+function RegistrationPage({ lang }: { lang: Lang }) {
+  const rt = registrationText[lang];
+  const [form, setForm] = useState({
+    fullName: "",
+    iin: "",
+    workplace: "",
+    phone: ""
+  });
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+  const isClosed = Date.now() >= registrationCloseAt;
+
+  function updateField(field: keyof typeof form, value: string) {
+    setForm((current) => ({ ...current, [field]: value }));
+    if (status !== "submitting") {
+      setStatus("idle");
+      setMessage("");
+    }
+  }
+
+  async function submitRegistration(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const payload = {
+      fullName: form.fullName.trim(),
+      iin: form.iin.replace(/\D/g, ""),
+      workplace: form.workplace.trim(),
+      phone: form.phone.trim()
+    };
+
+    if (!payload.fullName || !payload.iin || !payload.workplace || !payload.phone) {
+      setStatus("error");
+      setMessage(rt.required);
+      return;
+    }
+
+    if (!/^\d{12}$/.test(payload.iin)) {
+      setStatus("error");
+      setMessage(rt.iinError);
+      return;
+    }
+
+    setStatus("submitting");
+    setMessage("");
+
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result?.error || rt.error);
+      }
+
+      setStatus("success");
+      setMessage(rt.success);
+      setForm({ fullName: "", iin: "", workplace: "", phone: "" });
+    } catch (error) {
+      setStatus("error");
+      setMessage(error instanceof Error ? error.message : rt.error);
+    }
+  }
+
+  return (
+    <>
+      <Hero
+        lang={lang}
+        title={rt.title}
+        subtitle={rt.subtitle}
+        text={rt.intro}
+        eyebrow={copy[lang].congress}
+        meta={copy[lang].dateCity}
+        compact
+      />
+      <section className="section-pad bg-white">
+        <div className="site-shell grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div className="surface-card p-7">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-gold-50 text-gold-700">
+              {isClosed ? <X className="h-6 w-6" /> : <UserPlus className="h-6 w-6" />}
+            </div>
+            <h2 className="mt-6 text-2xl font-black">{isClosed ? rt.closedTitle : rt.title}</h2>
+            <p className="mt-3 text-sm leading-7 text-slate">{isClosed ? rt.closedText : rt.note}</p>
+            <div className="mt-6 rounded-lg bg-mist p-4 text-sm font-bold text-slate">
+              {rt.subtitle}
+            </div>
+          </div>
+
+          <form onSubmit={submitRegistration} className="surface-card grid gap-5 p-6 sm:p-8">
+            <RegistrationField
+              label={rt.fullName}
+              value={form.fullName}
+              onChange={(value) => updateField("fullName", value)}
+              disabled={isClosed || status === "submitting"}
+              autoComplete="name"
+            />
+            <RegistrationField
+              label={rt.iin}
+              value={form.iin}
+              onChange={(value) => updateField("iin", value.replace(/\D/g, "").slice(0, 12))}
+              disabled={isClosed || status === "submitting"}
+              inputMode="numeric"
+            />
+            <RegistrationField
+              label={rt.workplace}
+              value={form.workplace}
+              onChange={(value) => updateField("workplace", value)}
+              disabled={isClosed || status === "submitting"}
+              autoComplete="organization"
+            />
+            <RegistrationField
+              label={rt.phone}
+              value={form.phone}
+              onChange={(value) => updateField("phone", value)}
+              disabled={isClosed || status === "submitting"}
+              autoComplete="tel"
+              inputMode="tel"
+            />
+
+            {message && (
+              <div className={`rounded-lg p-4 text-sm font-bold ${status === "success" ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"}`}>
+                {message}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isClosed || status === "submitting"}
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-gold-500 px-5 py-4 text-sm font-black text-ink transition hover:bg-gold-100 disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate"
+            >
+              {status === "submitting" ? rt.submitting : rt.submit}
+              <Send className="h-4 w-4" />
+            </button>
+          </form>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function RegistrationField({
+  label,
+  value,
+  onChange,
+  disabled,
+  autoComplete,
+  inputMode
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  disabled: boolean;
+  autoComplete?: string;
+  inputMode?: HTMLAttributes<HTMLInputElement>["inputMode"];
+}) {
+  return (
+    <label className="grid gap-2">
+      <span className="text-sm font-black text-ink">{label} *</span>
+      <input
+        required
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        disabled={disabled}
+        autoComplete={autoComplete}
+        inputMode={inputMode}
+        className="min-h-12 rounded-lg border border-slate-200 bg-white px-4 py-3 text-base font-semibold text-ink outline-none transition placeholder:text-slate focus:border-brand-500 focus:ring-4 focus:ring-brand-50 disabled:bg-slate-50 disabled:text-slate"
+      />
+    </label>
   );
 }
 

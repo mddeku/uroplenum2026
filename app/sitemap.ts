@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 const baseUrl = "https://uroplenum.com";
 
-const pages = ["", "/program", "/faculty", "/venue"];
+const pages = ["", "/program", "/faculty", "/venue", "/registration"];
 const languages = ["en", "ru", "kz"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
