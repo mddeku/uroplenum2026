@@ -1,6 +1,11 @@
 const SHEET_ID = "1ySuq3WCHPIPtSGHT84pOEjoQP1P4N13-p4z0QhsAxlE";
 const SHEET_NAME = "Registrations";
 
+function doGet() {
+  return ContentService.createTextOutput(JSON.stringify({ ok: true, service: "registration" }))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
 function doPost(e) {
   const data = JSON.parse((e.postData && e.postData.contents) || "{}");
   const spreadsheet = SpreadsheetApp.openById(SHEET_ID);

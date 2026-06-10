@@ -319,7 +319,7 @@ function HomePage({ lang }: { lang: Lang }) {
           <SectionTitle eyebrow={t.organizers} title={t.organizers} text={t.organizersText} />
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
             {sponsorLogos.map((logo) => (
-              <div key={logo.src} className="sponsor-tile surface-card flex h-36 items-center justify-center bg-white p-6 text-center">
+              <div key={logo.src} className="sponsor-tile surface-card flex h-40 items-center justify-center bg-white p-6 text-center">
                 <SponsorLogo src={logo.src} alt={logo.alt} />
               </div>
             ))}
@@ -836,7 +836,7 @@ function InfoCard({ icon: Icon, title, text }: { icon: typeof Award; title: stri
 }
 
 function SponsorLogo({ src, alt }: { src: string; alt: string }) {
-  if (alt === "AOQa") {
+  if (false && alt === "AOQa") {
     return (
       <div className="flex h-full w-full flex-col items-center justify-center gap-2" aria-label={alt}>
         <div className="font-sans text-4xl font-black tracking-tight">
@@ -861,7 +861,7 @@ function SponsorLogo({ src, alt }: { src: string; alt: string }) {
     );
   }
 
-  return <img src={src} alt={alt} className="max-h-24 max-w-full object-contain" />;
+  return <img src={src} alt={alt} className="max-h-28 max-w-full object-contain" />;
 }
 
 function SectionTitle({

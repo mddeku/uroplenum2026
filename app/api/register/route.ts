@@ -61,8 +61,26 @@ export async function POST(request: Request) {
       })
     });
 
+    const responseText = await response.text();
+
     if (!response.ok) {
       return NextResponse.json({ error: "Google Sheets submission failed." }, { status: 502 });
+    }
+
+    try {
+      const result = JSON.parse(responseText) as { ok?: unknown; error?: unknown };
+
+      if (result.ok !== true) {
+        return NextResponse.json(
+          { error: typeof result.error === "string" ? result.error : "Google Sheets submission failed." },
+          { status: 502 }
+        );
+      }
+    } catch {
+      return NextResponse.json(
+        { error: "Google Apps Script does not return a valid registration response." },
+        { status: 502 }
+      );
     }
   } catch {
     return NextResponse.json({ error: "Google Sheets submission failed." }, { status: 502 });
