@@ -7,6 +7,7 @@ type RegistrationPayload = {
   iin?: unknown;
   workplace?: unknown;
   phone?: unknown;
+  email?: unknown;
 };
 
 function clean(value: unknown) {
@@ -30,15 +31,20 @@ export async function POST(request: Request) {
     fullName: clean(body.fullName),
     iin: clean(body.iin).replace(/\D/g, ""),
     workplace: clean(body.workplace),
-    phone: clean(body.phone)
+    phone: clean(body.phone),
+    email: clean(body.email)
   };
 
-  if (!payload.fullName || !payload.iin || !payload.workplace || !payload.phone) {
+  if (!payload.fullName || !payload.iin || !payload.workplace || !payload.phone || !payload.email) {
     return NextResponse.json({ error: "All fields are required." }, { status: 400 });
   }
 
   if (!/^\d{12}$/.test(payload.iin)) {
     return NextResponse.json({ error: "IIN must contain 12 digits." }, { status: 400 });
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+    return NextResponse.json({ error: "Email address is invalid." }, { status: 400 });
   }
 
   const endpoint = process.env.GOOGLE_REGISTRATION_WEB_APP_URL;

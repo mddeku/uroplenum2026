@@ -6,6 +6,7 @@ const HEADERS = [
   "IIN",
   "Place of work",
   "Phone number",
+  "Certificate email",
   "Event"
 ];
 
@@ -29,8 +30,9 @@ function doPost(e) {
     const iin = String(data.iin || "").trim();
     const workplace = String(data.workplace || "").trim();
     const phone = String(data.phone || "").trim();
+    const email = String(data.email || "").trim();
 
-    if (!fullName || !iin || !workplace || !phone) {
+    if (!fullName || !iin || !workplace || !phone || !email) {
       return json({ ok: false, error: "Missing required fields." });
     }
 
@@ -47,6 +49,7 @@ function doPost(e) {
       iin,
       workplace,
       phone,
+      email,
       data.event || "UROPLENUM 2026"
     ]);
     SpreadsheetApp.flush();

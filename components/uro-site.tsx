@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState, type FormEvent, type HTMLAttributes } from "react";
+import { useEffect, useMemo, useState, type FormEvent, type HTMLAttributes, type HTMLInputTypeAttribute } from "react";
 import {
   ArrowRight,
   Award,
@@ -53,11 +53,13 @@ const registrationText = {
     iin: "IIN",
     workplace: "Place of work",
     phone: "Phone number",
+    email: "Email for certificates",
     submit: "Submit registration",
     submitting: "Submitting...",
     success: "Registration submitted successfully.",
     required: "Please fill in all required fields.",
     iinError: "IIN must contain 12 digits.",
+    emailError: "Please enter a valid email address.",
     error: "Registration could not be submitted. Please try again later.",
     note: "All fields are required."
   },
@@ -72,11 +74,13 @@ const registrationText = {
     iin: "ИИН",
     workplace: "Место работы",
     phone: "Номер телефона",
+    email: "Электронная почта для сертификатов",
     submit: "Отправить регистрацию",
     submitting: "Отправка...",
     success: "Регистрация успешно отправлена.",
     required: "Пожалуйста, заполните все обязательные поля.",
     iinError: "ИИН должен содержать 12 цифр.",
+    emailError: "Пожалуйста, укажите корректный адрес электронной почты.",
     error: "Не удалось отправить регистрацию. Попробуйте позже.",
     note: "Все поля обязательны к заполнению."
   },
@@ -91,11 +95,13 @@ const registrationText = {
     iin: "ЖСН",
     workplace: "Жұмыс орны",
     phone: "Телефон нөмірі",
+    email: "Сертификат жіберілетін электрондық пошта",
     submit: "Тіркеуді жіберу",
     submitting: "Жіберілуде...",
     success: "Тіркеу сәтті жіберілді.",
     required: "Барлық міндетті өрістерді толтырыңыз.",
     iinError: "ЖСН 12 цифрдан тұруы керек.",
+    emailError: "Дұрыс электрондық пошта мекенжайын енгізіңіз.",
     error: "Тіркеуді жіберу мүмкін болмады. Кейінірек қайталап көріңіз.",
     note: "Барлық өрістер міндетті."
   }
@@ -467,7 +473,8 @@ function RegistrationPage({ lang }: { lang: Lang }) {
     fullName: "",
     iin: "",
     workplace: "",
-    phone: ""
+    phone: "",
+    email: ""
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -488,10 +495,11 @@ function RegistrationPage({ lang }: { lang: Lang }) {
       fullName: form.fullName.trim(),
       iin: form.iin.replace(/\D/g, ""),
       workplace: form.workplace.trim(),
-      phone: form.phone.trim()
+      phone: form.phone.trim(),
+      email: form.email.trim()
     };
 
-    if (!payload.fullName || !payload.iin || !payload.workplace || !payload.phone) {
+    if (!payload.fullName || !payload.iin || !payload.workplace || !payload.phone || !payload.email) {
       setStatus("error");
       setMessage(rt.required);
       return;
@@ -500,6 +508,12 @@ function RegistrationPage({ lang }: { lang: Lang }) {
     if (!/^\d{12}$/.test(payload.iin)) {
       setStatus("error");
       setMessage(rt.iinError);
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+      setStatus("error");
+      setMessage(rt.emailError);
       return;
     }
 
@@ -520,7 +534,7 @@ function RegistrationPage({ lang }: { lang: Lang }) {
 
       setStatus("success");
       setMessage(rt.success);
-      setForm({ fullName: "", iin: "", workplace: "", phone: "" });
+      setForm({ fullName: "", iin: "", workplace: "", phone: "", email: "" });
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : rt.error);
@@ -581,6 +595,15 @@ function RegistrationPage({ lang }: { lang: Lang }) {
               autoComplete="tel"
               inputMode="tel"
             />
+            <RegistrationField
+              label={rt.email}
+              value={form.email}
+              onChange={(value) => updateField("email", value)}
+              disabled={isClosed || status === "submitting"}
+              autoComplete="email"
+              inputMode="email"
+              type="email"
+            />
 
             {message && (
               <div className={`rounded-lg p-4 text-sm font-bold ${status === "success" ? "bg-emerald-50 text-emerald-700" : "bg-red-50 text-red-700"}`}>
@@ -609,7 +632,8 @@ function RegistrationField({
   onChange,
   disabled,
   autoComplete,
-  inputMode
+  inputMode,
+  type = "text"
 }: {
   label: string;
   value: string;
@@ -617,6 +641,7 @@ function RegistrationField({
   disabled: boolean;
   autoComplete?: string;
   inputMode?: HTMLAttributes<HTMLInputElement>["inputMode"];
+  type?: HTMLInputTypeAttribute;
 }) {
   return (
     <label className="grid gap-2">
@@ -628,6 +653,7 @@ function RegistrationField({
         disabled={disabled}
         autoComplete={autoComplete}
         inputMode={inputMode}
+        type={type}
         className="min-h-12 rounded-lg border border-slate-200 bg-white px-4 py-3 text-base font-semibold text-ink outline-none transition placeholder:text-slate focus:border-brand-500 focus:ring-4 focus:ring-brand-50 disabled:bg-slate-50 disabled:text-slate"
       />
     </label>
