@@ -68,11 +68,15 @@ export async function POST(request: Request) {
     }
 
     try {
-      const result = JSON.parse(responseText) as { ok?: unknown; error?: unknown };
+      const result = JSON.parse(responseText) as {
+        ok?: unknown;
+        error?: unknown;
+        rowNumber?: unknown;
+      };
 
-      if (result.ok !== true) {
+      if (result.ok !== true || typeof result.rowNumber !== "number") {
         return NextResponse.json(
-          { error: typeof result.error === "string" ? result.error : "Google Sheets submission failed." },
+          { error: typeof result.error === "string" ? result.error : "Google Sheets did not confirm row write." },
           { status: 502 }
         );
       }

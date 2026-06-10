@@ -1,38 +1,86 @@
 const SHEET_ID = "1ySuq3WCHPIPtSGHT84pOEjoQP1P4N13-p4z0QhsAxlE";
-const SHEET_NAME = "Registrations";
+const TARGET_SHEET_NAME = "";
+const HEADERS = [
+  "Submitted at",
+  "Full name",
+  "IIN",
+  "Place of work",
+  "Phone number",
+  "Event"
+];
 
 function doGet() {
-  return ContentService.createTextOutput(JSON.stringify({ ok: true, service: "registration" }))
-    .setMimeType(ContentService.MimeType.JSON);
+  const spreadsheet = SpreadsheetApp.openById(SHEET_ID);
+  const sheet = getTargetSheet(spreadsheet);
+
+  return json({
+    ok: true,
+    service: "registration",
+    spreadsheetId: SHEET_ID,
+    sheetName: sheet.getName(),
+    lastRow: sheet.getLastRow()
+  });
 }
 
 function doPost(e) {
-  const data = JSON.parse((e.postData && e.postData.contents) || "{}");
-  const spreadsheet = SpreadsheetApp.openById(SHEET_ID);
-  let sheet = spreadsheet.getSheetByName(SHEET_NAME);
+  try {
+    const data = JSON.parse((e.postData && e.postData.contents) || "{}");
+    const fullName = String(data.fullName || "").trim();
+    const iin = String(data.iin || "").trim();
+    const workplace = String(data.workplace || "").trim();
+    const phone = String(data.phone || "").trim();
 
-  if (!sheet) {
-    sheet = spreadsheet.insertSheet(SHEET_NAME);
+    if (!fullName || !iin || !workplace || !phone) {
+      return json({ ok: false, error: "Missing required fields." });
+    }
+
+    const spreadsheet = SpreadsheetApp.openById(SHEET_ID);
+    const sheet = getTargetSheet(spreadsheet);
+
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow(HEADERS);
+    }
+
     sheet.appendRow([
-      "Дата отправки",
-      "ФИО",
-      "ИИН",
-      "Место работы",
-      "Номер телефона",
-      "Мероприятие"
+      new Date(),
+      fullName,
+      iin,
+      workplace,
+      phone,
+      data.event || "UROPLENUM 2026"
     ]);
+    SpreadsheetApp.flush();
+
+    return json({
+      ok: true,
+      spreadsheetId: SHEET_ID,
+      sheetName: sheet.getName(),
+      rowNumber: sheet.getLastRow()
+    });
+  } catch (error) {
+    return json({
+      ok: false,
+      error: String(error && error.message ? error.message : error)
+    });
+  }
+}
+
+function getTargetSheet(spreadsheet) {
+  if (TARGET_SHEET_NAME) {
+    let sheet = spreadsheet.getSheetByName(TARGET_SHEET_NAME);
+
+    if (!sheet) {
+      sheet = spreadsheet.insertSheet(TARGET_SHEET_NAME);
+    }
+
+    return sheet;
   }
 
-  sheet.appendRow([
-    new Date(),
-    data.fullName || "",
-    data.iin || "",
-    data.workplace || "",
-    data.phone || "",
-    data.event || "UROPLENUM 2026"
-  ]);
+  return spreadsheet.getSheets()[0];
+}
 
-  return ContentService.createTextOutput(JSON.stringify({ ok: true })).setMimeType(
+function json(data) {
+  return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(
     ContentService.MimeType.JSON
   );
 }
