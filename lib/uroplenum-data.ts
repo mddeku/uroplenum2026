@@ -31,11 +31,8 @@ export const mapUrl = "https://2gis.kz/astana/firm/70000001033293245";
 export const sponsorLogos = [
   { src: "/sponsors/sponsor-4-aoqa.png", alt: "AOQa" },
   { src: "/sponsors/sponsor-2.png", alt: "Astana Urologists and Andrologists Society" },
-  { src: "/sponsors/sponsor-3.png", alt: "Astana Medical University" },
-  { src: "/sponsors/sponsor-5-alkaloid.pdf", alt: "Alkaloid" },
-  { src: "/sponsors/sponsor-6-mmg.png", alt: "Medical Marketing Group, LLC" },
-  { src: "/sponsors/sponsor-7-viva-pharm.png", alt: "VIVA Pharm" },
-  { src: "/sponsors/sponsor-8-respopharm.png", alt: "Respopharm" }
+  { src: "/sponsors/sponsor-ministry-health.webp", alt: "Ministry of Health of the Republic of Kazakhstan" },
+  { src: "/sponsors/sponsor-astana-health.webp", alt: "Astana Public Health Department" }
 ];
 
 export const copy = {
