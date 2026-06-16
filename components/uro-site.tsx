@@ -29,7 +29,6 @@ import {
   overview,
   pagePath,
   programDetails,
-  sponsorLogos,
   venueFacts,
   venueImage,
   type Lang,
@@ -320,19 +319,6 @@ function HomePage({ lang }: { lang: Lang }) {
       </section>
 
       <VenueFeature lang={lang} />
-
-      <section className="section-pad bg-mist section-motion">
-        <div className="site-shell">
-          <SectionTitle eyebrow={t.organizers} title={t.organizers} text={t.organizersText} />
-          <div className="mt-10 grid gap-4 sm:grid-cols-3">
-            {sponsorLogos.map((logo) => (
-              <div key={logo.src} className="sponsor-tile surface-card flex h-40 items-center justify-center bg-white p-6 text-center">
-                <SponsorLogo src={logo.src} alt={logo.alt} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <ContactBand lang={lang} />
     </>
