@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState, type FormEvent, type HTMLAttributes, type HTMLInputTypeAttribute } from "react";
+import { useEffect, useState, type FormEvent, type HTMLAttributes, type HTMLInputTypeAttribute } from "react";
 import {
   ArrowRight,
   Award,
@@ -286,6 +286,7 @@ function HomePage({ lang }: { lang: Lang }) {
         meta={t.dateCity}
         primary={{ href: `/program?lang=${lang}`, label: t.viewProgram }}
         secondary={{ href: `/faculty?lang=${lang}`, label: t.meetFaculty }}
+        tertiary={{ href: `/registration?lang=${lang}`, label: registrationText[lang].nav }}
       />
 
       <section className="section-pad bg-white">
@@ -669,6 +670,7 @@ function Hero({
   meta,
   primary,
   secondary,
+  tertiary,
   compact = false,
   venue = false
 }: {
@@ -680,6 +682,7 @@ function Hero({
   meta: string;
   primary?: { href: string; label: string };
   secondary?: { href: string; label: string };
+  tertiary?: { href: string; label: string };
   compact?: boolean;
   venue?: boolean;
 }) {
@@ -727,10 +730,11 @@ function Hero({
               {meta}
             </span>
           </div>
-          {(primary || secondary) && (
+          {(primary || secondary || tertiary) && (
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               {primary && <ButtonLink href={primary.href} label={primary.label} primary />}
               {secondary && <ButtonLink href={secondary.href} label={secondary.label} />}
+              {tertiary && <ButtonLink href={tertiary.href} label={tertiary.label} accent />}
             </div>
           )}
         </div>
@@ -817,26 +821,11 @@ function ProgramCard({ lang, session }: { lang: Lang; session: (typeof programDe
   );
 }
 
-function FacultyCard({ lang, person, index }: { lang: Lang; person: (typeof faculty)[number]; index: number }) {
+function FacultyCard({ lang, person }: { lang: Lang; person: (typeof faculty)[number]; index: number }) {
   const displayName = lang === "ru" ? person.ruName : lang === "kz" ? person.kzName : person.name;
-  const initials = useMemo(
-    () =>
-      displayName
-        .split(" ")
-        .slice(0, 2)
-        .map((part) => part[0])
-        .join(""),
-    [displayName]
-  );
-  const gradients = ["from-brand-700 to-ink", "from-gold-600 to-ink", "from-navy-600 to-brand-700"];
 
   return (
-    <article className="faculty-card surface-card overflow-hidden transition hover:-translate-y-1 hover:shadow-soft">
-      <div className={`faculty-portrait flex h-48 items-center justify-center bg-gradient-to-br ${gradients[index % gradients.length]} text-white`}>
-        <div className="flex h-24 w-24 items-center justify-center rounded-full border border-white/25 bg-white/12 text-3xl font-black">
-          {initials}
-        </div>
-      </div>
+    <article className="faculty-card surface-card overflow-hidden border-t-4 border-brand-600 transition hover:-translate-y-1 hover:shadow-soft">
       <div className="p-6">
         <h3 className="text-xl font-black">{displayName}</h3>
         <p className="mt-3 text-sm font-semibold leading-6 text-slate">{person.role[lang]}</p>
@@ -942,16 +931,30 @@ function ContactBand({ lang }: { lang: Lang }) {
   );
 }
 
-function ButtonLink({ href, label, primary = false }: { href: string; label: string; primary?: boolean }) {
+function ButtonLink({
+  href,
+  label,
+  primary = false,
+  accent = false
+}: {
+  href: string;
+  label: string;
+  primary?: boolean;
+  accent?: boolean;
+}) {
   return (
     <Link
       href={href}
       className={`action-button inline-flex items-center justify-center gap-2 rounded-lg px-5 py-4 text-sm font-black transition ${
-        primary ? "bg-gold-500 text-ink hover:bg-gold-100" : "bg-white text-ink hover:bg-white/88"
+        primary
+          ? "bg-gold-500 text-ink hover:bg-gold-100"
+          : accent
+            ? "border border-white/20 bg-brand-600 text-white hover:bg-brand-500"
+            : "bg-white text-ink hover:bg-white/88"
       }`}
     >
       {label}
-      {primary ? <MoveUpRight className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
+      {primary || accent ? <MoveUpRight className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
     </Link>
   );
 }
