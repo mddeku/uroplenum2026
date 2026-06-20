@@ -28,6 +28,7 @@ import {
   nav,
   overview,
   pagePath,
+  localizeProgramLabel,
   programDetails,
   venueFacts,
   venueImage,
@@ -806,7 +807,9 @@ function ProgramCard({ lang, session }: { lang: Lang; session: (typeof programDe
       <p className="mt-4 text-sm font-bold uppercase tracking-[0.14em] text-slate">
         {lang === "en" ? "Moderators" : lang === "ru" ? "Модераторы" : "Модераторлар"}
       </p>
-      <p className="mt-2 text-sm leading-6 text-slate">{session.moderators.join(", ")}</p>
+      <p className="mt-2 text-sm leading-6 text-slate">
+        {session.moderators.map((moderator) => localizeProgramLabel(moderator, lang)).join(", ")}
+      </p>
       <div className="mt-5 grid gap-3">
         {session.talks.map((talk) => (
           <div key={`${talk.time}-${talk.speaker.en}-${talk.topic.en}`} className="talk-row rounded-lg border border-slate-200 bg-slate-50 p-4">

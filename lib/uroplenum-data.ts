@@ -227,14 +227,123 @@ const programDictionary: Record<string, { en: string; kz: string }> = {
   }
 };
 
-const text = (en: string, ru: string, kz: string): LocalText => {
-  if (en === ru && ru === kz && programDictionary[ru]) {
-    return { en: programDictionary[ru].en, ru, kz: programDictionary[ru].kz };
+const cyrillicToLatin: Record<string, string> = {
+  А: "A",
+  а: "a",
+  Ә: "A",
+  ә: "a",
+  Б: "B",
+  б: "b",
+  В: "V",
+  в: "v",
+  Г: "G",
+  г: "g",
+  Ғ: "G",
+  ғ: "g",
+  Д: "D",
+  д: "d",
+  Е: "E",
+  е: "e",
+  Ё: "Yo",
+  ё: "yo",
+  Ж: "Zh",
+  ж: "zh",
+  З: "Z",
+  з: "z",
+  И: "I",
+  и: "i",
+  І: "I",
+  і: "i",
+  Й: "Y",
+  й: "y",
+  К: "K",
+  к: "k",
+  Қ: "K",
+  қ: "k",
+  Л: "L",
+  л: "l",
+  М: "M",
+  м: "m",
+  Н: "N",
+  н: "n",
+  Ң: "N",
+  ң: "n",
+  О: "O",
+  о: "o",
+  Ө: "O",
+  ө: "o",
+  П: "P",
+  п: "p",
+  Р: "R",
+  р: "r",
+  С: "S",
+  с: "s",
+  Т: "T",
+  т: "t",
+  У: "U",
+  у: "u",
+  Ұ: "U",
+  ұ: "u",
+  Ү: "U",
+  ү: "u",
+  Ф: "F",
+  ф: "f",
+  Х: "Kh",
+  х: "kh",
+  Һ: "H",
+  һ: "h",
+  Ц: "Ts",
+  ц: "ts",
+  Ч: "Ch",
+  ч: "ch",
+  Ш: "Sh",
+  ш: "sh",
+  Щ: "Shch",
+  щ: "shch",
+  Ы: "Y",
+  ы: "y",
+  Э: "E",
+  э: "e",
+  Ю: "Yu",
+  ю: "yu",
+  Я: "Ya",
+  я: "ya",
+  Ь: "",
+  ь: "",
+  Ъ: "",
+  ъ: ""
+};
+
+const hasCyrillic = (value: string) => /[А-Яа-яЁёӘәІіҢңҒғҮүҰұҚқӨөҺһ]/.test(value);
+
+const transliterateProgramLabel = (value: string) =>
+  value
+    .split("")
+    .map((letter) => cyrillicToLatin[letter] ?? letter)
+    .join("");
+
+export const localizeProgramLabel = (value: string, lang: Lang): string => {
+  const translated = programDictionary[value];
+
+  if (translated) {
+    return lang === "en" ? translated.en : lang === "kz" ? translated.kz : value;
   }
 
-  return { en, ru, kz };
+  if (lang === "en" && hasCyrillic(value)) {
+    return transliterateProgramLabel(value);
+  }
+
+  return value;
 };
-const same = (value: string): LocalText => ({ en: value, ru: value, kz: value });
+
+const text = (en: string, ru: string, kz: string): LocalText => {
+  return {
+    en: hasCyrillic(en) ? localizeProgramLabel(en, "en") : en,
+    ru,
+    kz: kz === ru ? localizeProgramLabel(ru, "kz") : kz
+  };
+};
+const same = (value: string): LocalText => text(value, value, value);
 const talk = (time: string, speaker: LocalText, topic: LocalText) => ({ time, speaker, topic });
 
 export const langs: { id: Lang; label: string; name: string }[] = [
