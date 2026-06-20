@@ -33,6 +33,37 @@ h4 {
   letter-spacing: 0 !important;
 }
 
+[data-lang="kz"] {
+  --font-body: Arial, "Helvetica Neue", Helvetica, "Segoe UI", sans-serif;
+  --font-display: Arial, "Helvetica Neue", Helvetica, "Segoe UI", sans-serif;
+}
+
+[data-lang="kz"] h1,
+[data-lang="kz"] h2,
+[data-lang="kz"] h3,
+[data-lang="kz"] h4 {
+  line-height: 1.12;
+}
+
+[data-lang="kz"] .fine-label,
+[data-lang="kz"] .metric-card,
+[data-lang="kz"] .dashboard-card,
+[data-lang="kz"] .program-card,
+[data-lang="kz"] .faculty-card {
+  font-feature-settings: "kern" 1;
+}
+
+[data-lang="kz"] .fine-label {
+  letter-spacing: 0.14em !important;
+}
+
+[data-lang="kz"] .metric-card [class*="tracking-"],
+[data-lang="kz"] .dashboard-card [class*="tracking-"],
+[data-lang="kz"] .program-card [class*="tracking-"],
+[data-lang="kz"] .faculty-card [class*="tracking-"] {
+  letter-spacing: 0.09em !important;
+}
+
 button,
 input,
 textarea,

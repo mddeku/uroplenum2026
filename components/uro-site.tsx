@@ -138,8 +138,12 @@ export function UroSitePage({ page }: { page: SitePageKey }) {
     window.history.replaceState({}, "", url.toString());
   }
 
+  useEffect(() => {
+    document.documentElement.lang = lang === "kz" ? "kk" : lang;
+  }, [lang]);
+
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[#f4f7fb] text-ink">
+    <div lang={lang === "kz" ? "kk" : lang} data-lang={lang} className="min-h-screen overflow-x-hidden bg-[#f4f7fb] text-ink">
       <Navbar page={page} lang={lang} menuOpen={menuOpen} setMenuOpen={setMenuOpen} setLanguage={setLanguage} />
       {page === "home" && <HomePage lang={lang} />}
       {page === "program" && <ProgramPage lang={lang} />}
