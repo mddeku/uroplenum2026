@@ -304,8 +304,8 @@ function HomePage({ lang }: { lang: Lang }) {
           <div className="grid gap-4 sm:grid-cols-2">
             {[
               ["1", lang === "en" ? "Congress day" : lang === "ru" ? "День пленума" : "Пленум күні"],
-              ["5", lang === "en" ? "Scientific tracks" : lang === "ru" ? "Научных треков" : "Ғылыми трек"],
-              ["20+", lang === "en" ? "Faculty members" : lang === "ru" ? "Спикеров" : "Спикер"],
+              ["5", lang === "en" ? "Scientific sections" : lang === "ru" ? "Научных секций" : "Ғылыми секция"],
+              ["40+", lang === "en" ? "Faculty members" : lang === "ru" ? "Спикеров" : "Спикер"],
               [lang === "en" ? "Astana" : "Астана", lang === "en" ? "Host city" : lang === "ru" ? "Город проведения" : "Өтетін қала"]
             ].map(([value, label]) => (
               <div key={label} className="metric-card surface-card p-6">
@@ -745,10 +745,10 @@ function Hero({
               <Sparkles className="h-5 w-5 text-gold-500" />
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3">
-              <HeroMetric value="20+" label={lang === "en" ? "Speakers" : lang === "ru" ? "Спикеров" : "Спикер"} />
-              <HeroMetric value="5" label={lang === "en" ? "Tracks" : lang === "ru" ? "Треков" : "Трек"} />
+              <HeroMetric value="40+" label={lang === "en" ? "Speakers" : lang === "ru" ? "Спикеров" : "Спикер"} />
+              <HeroMetric value="5" label={lang === "en" ? "Sections" : lang === "ru" ? "Секций" : "Секция"} />
               <HeroMetric value="1" label={lang === "en" ? "Day" : lang === "ru" ? "День" : "Күн"} />
-              <HeroMetric value="Astana" label={lang === "en" ? "City" : lang === "ru" ? "Город" : "Қала"} />
+              <HeroMetric value={lang === "en" ? "Astana" : "Астана"} label={lang === "en" ? "City" : lang === "ru" ? "Город" : "Қала"} />
             </div>
           </div>
           <div className="dashboard-card dashboard-card-small">
@@ -797,6 +797,15 @@ function VenueFeature({ lang }: { lang: Lang }) {
 }
 
 function ProgramCard({ lang, session }: { lang: Lang; session: (typeof programDetails)[number] }) {
+  const moderatorLabel =
+    "moderatorLabel" in session && session.moderatorLabel
+      ? session.moderatorLabel[lang]
+      : lang === "en"
+        ? "Moderators"
+        : lang === "ru"
+          ? "Модераторы"
+          : "Модераторлар";
+
   return (
     <article className="program-card surface-card p-6 transition hover:-translate-y-1 hover:shadow-soft">
       <div className="flex flex-wrap items-center gap-3">
@@ -805,7 +814,7 @@ function ProgramCard({ lang, session }: { lang: Lang; session: (typeof programDe
       </div>
       <h2 className="mt-5 text-2xl font-black tracking-tight">{session.title[lang]}</h2>
       <p className="mt-4 text-sm font-bold uppercase tracking-[0.14em] text-slate">
-        {lang === "en" ? "Moderators" : lang === "ru" ? "Модераторы" : "Модераторлар"}
+        {moderatorLabel}
       </p>
       <p className="mt-2 text-sm leading-6 text-slate">
         {session.moderators.map((moderator) => localizeProgramLabel(moderator, lang)).join(", ")}
@@ -814,7 +823,7 @@ function ProgramCard({ lang, session }: { lang: Lang; session: (typeof programDe
         {session.talks.map((talk) => (
           <div key={`${talk.time}-${talk.speaker.en}-${talk.topic.en}`} className="talk-row rounded-lg border border-slate-200 bg-slate-50 p-4">
             <div className="text-sm font-black text-brand-700">{talk.time}</div>
-            <div className="mt-1 font-black text-ink">{localizeProgramLabel(talk.speaker[lang], lang)}</div>
+            <div className="mt-1 font-black text-ink">{talk.speaker[lang]}</div>
             <div className="mt-2 text-sm leading-6 text-slate">{talk.topic[lang]}</div>
           </div>
         ))}
