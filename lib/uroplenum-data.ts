@@ -4,7 +4,236 @@ export type PageKey = "home" | "program" | "faculty" | "venue";
 type LocalText = Record<Lang, string>;
 type Group = "official" | "kazakhstan" | "international";
 
-const text = (en: string, ru: string, kz: string): LocalText => ({ en, ru, kz });
+const programDictionary: Record<string, { en: string; kz: string }> = {
+  "Registration": {
+    en: "Registration",
+    kz: "Тіркеу"
+  },
+  "Aspan Hall": {
+    en: "Aspan Hall",
+    kz: "«Аспан» залы"
+  },
+  "Closing Ceremony": {
+    en: "Closing Ceremony",
+    kz: "Жабылу рәсімі"
+  },
+  "Зал «Аспан»": {
+    en: "Aspan Hall",
+    kz: "«Аспан» залы"
+  },
+  "Зал «Шанырак»": {
+    en: "Shanyrak Hall",
+    kz: "«Шанырақ» залы"
+  },
+  "Официальное открытие и приветственные слова": {
+    en: "Official Opening and Welcome Remarks",
+    kz: "Ресми ашылу және құттықтау сөздер"
+  },
+  "Секция «Мужское Здоровье» 09:20 – 11:50": {
+    en: "Men's Health Session",
+    kz: "Ерлер денсаулығы секциясы"
+  },
+  "Секция «Детская урология» 11:50 – 13:20": {
+    en: "Pediatric Urology Session",
+    kz: "Балалар урологиясы секциясы"
+  },
+  "Секция «Онкоурология» 09:20 – 13:00": {
+    en: "Uro-oncology Session",
+    kz: "Онкоурология секциясы"
+  },
+  "Секция «Эндоурология» 14:00 – 17:30": {
+    en: "Endourology Session",
+    kz: "Эндоурология секциясы"
+  },
+  "Секция молодых урологов 15:10 – 17:30": {
+    en: "Young Urologists Session",
+    kz: "Жас урологтар секциясы"
+  },
+  "Регистрация и доступ в выставочную зону": {
+    en: "Registration and access to the exhibition area",
+    kz: "Тіркеу және көрме аймағына кіру"
+  },
+  "Вице-министр здравоохранения Республики Казахстан Муратов Тимур Муратович": {
+    en: "Timur Muratov, Vice Minister of Healthcare of the Republic of Kazakhstan",
+    kz: "Тимур Мұратов, Қазақстан Республикасы Денсаулық сақтау вице-министрі"
+  },
+  "Ректор Медицинского университета Астана Турмухамбетова Анар Акылбековна": {
+    en: "Anar Turmukhambetova, Rector of Astana Medical University",
+    kz: "Анар Тұрмұхамбетова, Астана медицина университетінің ректоры"
+  },
+  "Глава Управления Здравоохранения г. Астана Тулеуова Айнур Сакеновна": {
+    en: "Ainur Tuleuova, Head of Astana City Health Department",
+    kz: "Айнұр Төлеуова, Астана қаласы Денсаулық сақтау басқармасының басшысы"
+  },
+  "Главный уролог Республики Казахстан Алчинбаев Мирзакарим Каримович": {
+    en: "Mirzakarim Alchinbayev, Chief Urologist of the Republic of Kazakhstan",
+    kz: "Мирзакарим Алчинбаев, Қазақстан Республикасының бас урологы"
+  },
+  "Мужское здоровье – междисциплинарный подход": {
+    en: "Men's health: an interdisciplinary approach",
+    kz: "Ерлер денсаулығы: пәнаралық тәсіл"
+  },
+  "Роль фитотерапии в комплексном лечении ДГПЖ": {
+    en: "The role of phytotherapy in comprehensive BPH treatment",
+    kz: "ҚБҚГ кешенді еміндегі фитотерапияның рөлі"
+  },
+  "Мужское бесплодие: новые и перспективные варианты лечения": {
+    en: "Male infertility: new and promising treatment options",
+    kz: "Ерлер бедеулігі: емдеудің жаңа және перспективалы нұсқалары"
+  },
+  "Регенеративная медицина": {
+    en: "Regenerative medicine",
+    kz: "Регенеративті медицина"
+  },
+  "Troubleshooting в имплантационной хирургии": {
+    en: "Troubleshooting in implant surgery",
+    kz: "Имплантациялық хирургиядағы күрделі жағдайларды шешу"
+  },
+  "Хирургическое лечение преждевременной эякуляции": {
+    en: "Surgical treatment of premature ejaculation",
+    kz: "Ерте эякуляцияны хирургиялық емдеу"
+  },
+  "Социальные сети и мужское здоровье": {
+    en: "Social media and men's health",
+    kz: "Әлеуметтік желілер және ерлер денсаулығы"
+  },
+  "Современный пациент с ДГПЖ": {
+    en: "The modern patient with BPH",
+    kz: "ҚБҚГ бар заманауи пациент"
+  },
+  "Современная диагностика мужского бесплодия": {
+    en: "Modern diagnosis of male infertility",
+    kz: "Ерлер бедеулігінің заманауи диагностикасы"
+  },
+  "Трансплантация почек у детей в аугментированный мочевой пузырь": {
+    en: "Kidney transplantation in children into an augmented bladder",
+    kz: "Балаларда аугментацияланған қуыққа бүйрек трансплантациясы"
+  },
+  "Гонадотропины и функция яичек у мальчиков с крипторхизмом": {
+    en: "Gonadotropins and testicular function in boys with cryptorchidism",
+    kz: "Крипторхизмі бар ұл балалардағы гонадотропиндер және аталық без функциясы"
+  },
+  "Choice of videosurgery technique for pyeloureteroplasty": {
+    en: "Choice of videosurgery technique for pyeloureteroplasty",
+    kz: "Пиелоуретеропластика үшін видеохирургия техникасын таңдау"
+  },
+  "Актуальная онкоурологическая ситуация за 2025 год по Республике Казахстан": {
+    en: "Current uro-oncological situation in the Republic of Kazakhstan in 2025",
+    kz: "Қазақстан Республикасындағы 2025 жылғы өзекті онкоурологиялық жағдай"
+  },
+  "Клиническая карта страны: пациенты с мГЧРПЖ": {
+    en: "Country clinical map: patients with metastatic hormone-sensitive prostate cancer",
+    kz: "Елдің клиникалық картасы: метастатикалық гормонға сезімтал қуықасты безі обыры бар пациенттер"
+  },
+  "Клинический случай г. Астана": {
+    en: "Clinical case, Astana",
+    kz: "Астана қаласындағы клиникалық жағдай"
+  },
+  "Клинический случай г. Караганда": {
+    en: "Clinical case, Karaganda",
+    kz: "Қарағанды қаласындағы клиникалық жағдай"
+  },
+  "Клинический случай г. Костанай": {
+    en: "Clinical case, Kostanay",
+    kz: "Қостанай қаласындағы клиникалық жағдай"
+  },
+  "Клинический случай г. Актау": {
+    en: "Clinical case, Aktau",
+    kz: "Ақтау қаласындағы клиникалық жағдай"
+  },
+  "Клинический случай г. Уральск": {
+    en: "Clinical case, Uralsk",
+    kz: "Орал қаласындағы клиникалық жағдай"
+  },
+  "Клинический случай г. Кызылорда": {
+    en: "Clinical case, Kyzylorda",
+    kz: "Қызылорда қаласындағы клиникалық жағдай"
+  },
+  "Сессия вопросов и ответов": {
+    en: "Question and answer session",
+    kz: "Сұрақ-жауап сессиясы"
+  },
+  "ПЕРЕРЫВ НА ОБЕД": {
+    en: "Lunch break",
+    kz: "Түскі үзіліс"
+  },
+  "Текущее состояние лечения доброкачественной гиперплазии предстательной железы в Китае": {
+    en: "Current status of BPH treatment in China",
+    kz: "Қытайдағы қуықасты безінің қатерсіз гиперплазиясын емдеудің қазіргі жағдайы"
+  },
+  "Осложнения ПНЛ: как предупредить и устранить?": {
+    en: "PNL complications: how to prevent and manage them?",
+    kz: "ПНЛ асқынулары: қалай алдын алып, жоюға болады?"
+  },
+  "Beyond IPSS: What Really Matters When Choosing a BPE Procedure?": {
+    en: "Beyond IPSS: What Really Matters When Choosing a BPE Procedure?",
+    kz: "IPSS-тен тыс: ҚБҚГ процедурасын таңдауда шын мәнінде не маңызды?"
+  },
+  "Узкая уретра и аденома простаты. Варианты решения проблемы?": {
+    en: "Narrow urethra and prostate adenoma: treatment options",
+    kz: "Тар уретра және қуықасты безінің аденомасы: мәселені шешу жолдары"
+  },
+  "Лечение сложных камней почек": {
+    en: "Management of complex renal stones",
+    kz: "Күрделі бүйрек тастарын емдеу"
+  },
+  "Актуальные аспекты неосложненной инфекции мочевых путей": {
+    en: "Current aspects of uncomplicated urinary tract infection",
+    kz: "Асқынбаған несеп жолдары инфекциясының өзекті аспектілері"
+  },
+  "Активная аспирация в лечении МКБ: эволюция методики": {
+    en: "Active aspiration in urolithiasis treatment: evolution of the technique",
+    kz: "Несеп-тас ауруын емдеудегі белсенді аспирация: әдістеменің эволюциясы"
+  },
+  "Новые технологии в амбулаторной урологии": {
+    en: "New technologies in outpatient urology",
+    kz: "Амбулаторлық урологиядағы жаңа технологиялар"
+  },
+  "Современные тенденции в лечении МКБ": {
+    en: "Modern trends in urolithiasis treatment",
+    kz: "Несеп-тас ауруын емдеудегі заманауи үрдістер"
+  },
+  "Когда начинать PARP ингибитор: сейчас или позже? Новые данные и нерешённые вопросы": {
+    en: "When to start a PARP inhibitor: now or later? New data and unresolved questions",
+    kz: "PARP тежегішін қашан бастау керек: қазір ме, кейін бе? Жаңа деректер және шешілмеген сұрақтар"
+  },
+  "Непростой цистит. Как повысить эффективность лечения?": {
+    en: "Difficult cystitis: how to improve treatment effectiveness?",
+    kz: "Күрделі цистит: ем тиімділігін қалай арттыруға болады?"
+  },
+  "Ретроградная интраренальная хирургия": {
+    en: "Retrograde intrarenal surgery",
+    kz: "Ретроградты интрареналдық хирургия"
+  },
+  "Fluid Dynamics in Endourology: | Why Flow Matters": {
+    en: "Fluid Dynamics in Endourology: Why Flow Matters",
+    kz: "Эндоурологиядағы сұйықтық динамикасы: ағын неге маңызды"
+  },
+  "| Evolution of PCNL: Suction as an Essential Standard of Care": {
+    en: "Evolution of PCNL: Suction as an Essential Standard of Care",
+    kz: "PCNL эволюциясы: аспирация емдеудің маңызды стандарты ретінде"
+  },
+  "XX — не всегда женщина: клинический случай": {
+    en: "XX is not always female: a clinical case",
+    kz: "XX әрдайым әйел емес: клиникалық жағдай"
+  },
+  "Нейрогенная дисфункция мочевого пузыря у детей": {
+    en: "Neurogenic bladder dysfunction in children",
+    kz: "Балалардағы қуықтың нейрогендік дисфункциясы"
+  },
+  "Официальное закрытие": {
+    en: "Official closing",
+    kz: "Ресми жабылу"
+  }
+};
+
+const text = (en: string, ru: string, kz: string): LocalText => {
+  if (en === ru && ru === kz && programDictionary[ru]) {
+    return { en: programDictionary[ru].en, ru, kz: programDictionary[ru].kz };
+  }
+
+  return { en, ru, kz };
+};
 const same = (value: string): LocalText => ({ en: value, ru: value, kz: value });
 const talk = (time: string, speaker: LocalText, topic: LocalText) => ({ time, speaker, topic });
 
