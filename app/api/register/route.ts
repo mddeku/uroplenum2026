@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const registrationCloseAt = Date.parse("2026-07-03T00:00:00+05:00");
+const registrationCloseAt = Date.parse("2026-07-02T12:00:00+05:00");
 
 type RegistrationPayload = {
   fullName?: unknown;

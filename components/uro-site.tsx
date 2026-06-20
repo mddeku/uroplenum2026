@@ -38,16 +38,19 @@ import {
 const pageKeys: PageKey[] = ["home", "program", "faculty", "venue"];
 type SitePageKey = PageKey | "registration";
 
-const registrationCloseAt = Date.parse("2026-07-03T00:00:00+05:00");
+const registrationCloseAt = Date.parse("2026-07-02T12:00:00+05:00");
 
 const registrationText = {
   en: {
     nav: "Register",
     title: "Participant Registration",
-    subtitle: "Registration is open until July 2, 2026",
+    subtitle: "Registration is open until July 2, 2026, 12:00",
     intro: "Please complete all required fields to register for UROPLENUM 2026.",
     closedTitle: "Registration is closed",
-    closedText: "Participant registration closed after July 2, 2026.",
+    closedText: "Participant registration closed on July 2, 2026 at 12:00.",
+    warningTitle: "Important notice",
+    warningText:
+      "Registration for the event closes on July 2 at 12:00.\n\nDear participants, please be extremely attentive when completing this form.\n\nAll certificates are generated and sent automatically. If there is an error in your full name or email address, the system may not send the document correctly, or the certificate may contain typos.\n\nBefore submitting the form, please carefully check that your data is written correctly.",
     fullName: "Full name",
     iin: "IIN",
     workplace: "Place of work",
@@ -65,10 +68,13 @@ const registrationText = {
   ru: {
     nav: "Регистрация",
     title: "Регистрация участников",
-    subtitle: "Регистрация открыта до 2 июля 2026 года",
+    subtitle: "Регистрация открыта до 2 июля 2026 года, 12:00",
     intro: "Заполните все обязательные поля для регистрации на UROPLENUM 2026.",
     closedTitle: "Регистрация закрыта",
-    closedText: "Регистрация участников закрыта после 2 июля 2026 года.",
+    closedText: "Регистрация участников закрыта 2 июля 2026 года в 12:00.",
+    warningTitle: "Обратите внимание!",
+    warningText:
+      "Регистрация на мероприятие закрывается 2 июля в 12:00.\n\nУважаемые участники!\nПожалуйста, будьте предельно внимательны при заполнении данной формы.\n\nВсе сертификаты генерируются и рассылаются автоматически. Если вы допустите ошибку в ФИО или адресе электронной почты, система не сможет корректно отправить документ, либо в самом сертификате будут опечатки.\n\nПеред отправкой формы обязательно перепроверьте правильность написания ваших данных.",
     fullName: "ФИО",
     iin: "ИИН",
     workplace: "Место работы",
@@ -86,10 +92,13 @@ const registrationText = {
   kz: {
     nav: "Тіркеу",
     title: "Қатысушыларды тіркеу",
-    subtitle: "Тіркеу 2026 жылғы 2 шілдеге дейін ашық",
+    subtitle: "Тіркеу 2026 жылғы 2 шілде, сағат 12:00-ге дейін ашық",
     intro: "UROPLENUM 2026 қатысу үшін барлық міндетті өрістерді толтырыңыз.",
     closedTitle: "Тіркеу жабылды",
-    closedText: "Қатысушыларды тіркеу 2026 жылғы 2 шілдеден кейін жабылды.",
+    closedText: "Қатысушыларды тіркеу 2026 жылғы 2 шілде сағат 12:00-де жабылды.",
+    warningTitle: "Назар аударыңыз!",
+    warningText:
+      "Іс-шараға тіркеу 2 шілде күні сағат 12:00-де жабылады.\n\nҚұрметті қатысушылар!\nОсы форманы толтырғанда өте мұқият болыңыз.\n\nБарлық сертификаттар автоматты түрде қалыптастырылып, жіберіледі. Егер Т.А.Ә. немесе электрондық пошта мекенжайында қате жіберілсе, жүйе құжатты дұрыс жібере алмауы мүмкін немесе сертификатта қате жазулар болуы ықтимал.\n\nФорманы жібермес бұрын деректеріңіздің дұрыс жазылғанын міндетті түрде қайта тексеріңіз.",
     fullName: "Т.А.Ә.",
     iin: "ЖСН",
     workplace: "Жұмыс орны",
@@ -553,6 +562,10 @@ function RegistrationPage({ lang }: { lang: Lang }) {
           </div>
 
           <form onSubmit={submitRegistration} className="surface-card grid gap-5 p-6 sm:p-8">
+            <div className="rounded-lg border border-gold-200 bg-gold-50 p-5 text-sm leading-7 text-ink">
+              <div className="font-black text-gold-700">{rt.warningTitle}</div>
+              <p className="mt-2 whitespace-pre-line font-semibold text-slate">{rt.warningText}</p>
+            </div>
             <RegistrationField
               label={rt.fullName}
               value={form.fullName}
