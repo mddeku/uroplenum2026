@@ -814,7 +814,7 @@ function ProgramCard({ lang, session }: { lang: Lang; session: (typeof programDe
         {session.talks.map((talk) => (
           <div key={`${talk.time}-${talk.speaker.en}-${talk.topic.en}`} className="talk-row rounded-lg border border-slate-200 bg-slate-50 p-4">
             <div className="text-sm font-black text-brand-700">{talk.time}</div>
-            <div className="mt-1 font-black text-ink">{talk.speaker[lang]}</div>
+            <div className="mt-1 font-black text-ink">{localizeProgramLabel(talk.speaker[lang], lang)}</div>
             <div className="mt-2 text-sm leading-6 text-slate">{talk.topic[lang]}</div>
           </div>
         ))}
