@@ -8,6 +8,7 @@ import {
   Building2,
   CalendarDays,
   CheckCircle2,
+  ClipboardList,
   Mail,
   MapPin,
   Menu,
@@ -40,6 +41,41 @@ const pageKeys: PageKey[] = ["home", "program", "faculty", "venue"];
 type SitePageKey = PageKey | "registration";
 
 const registrationCloseAt = Date.parse("2026-07-02T12:00:00+05:00");
+const researchSurveyUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfpKiNFc5iGUQBBRyydfGGncDCOfCgZJxa14s2n5CtXdvnOng/viewform?usp=dialog";
+
+const researchSurveyText = {
+  en: {
+    eyebrow: "Research survey",
+    title: "Invitation to participate in a study!",
+    greeting: "Dear colleagues!",
+    description:
+      "A short survey is being conducted to estimate the approximate volume of procedures in Kazakhstan in which a Ureteral Access Sheath is used during endourological interventions.",
+    collaboration:
+      "Specialists who complete the questionnaire in full may be included among the co-authors or collaborators of a future scientific publication or presentation based on the study results.",
+    button: "Take the survey"
+  },
+  ru: {
+    eyebrow: "Научное исследование",
+    title: "Приглашение участвовать в исследовании!",
+    greeting: "Здравствуйте, коллеги!",
+    description:
+      "Проводится короткий опрос для оценки примерного объёма операций, в которых используется Ureteral Access Sheath при эндоурологических вмешательствах в Казахстане.",
+    collaboration:
+      "Все специалисты, полностью ответившие на вопросы опросника, могут быть включены в список соавторов или коллаборации будущей научной публикации или презентации по итогам исследования.",
+    button: "Пройти опрос"
+  },
+  kz: {
+    eyebrow: "Ғылыми зерттеу",
+    title: "Зерттеуге қатысуға шақырамыз!",
+    greeting: "Құрметті әріптестер!",
+    description:
+      "Қазақстандағы эндоурологиялық араласулар кезінде Ureteral Access Sheath қолданылатын операциялардың шамамен көлемін бағалау үшін қысқаша сауалнама жүргізілуде.",
+    collaboration:
+      "Сауалнама сұрақтарына толық жауап берген мамандар зерттеу нәтижелері бойынша болашақ ғылыми жарияланымның немесе презентацияның бірлескен авторлары не коллабораторлары тізіміне енгізілуі мүмкін.",
+    button: "Сауалнамаға өту"
+  }
+} satisfies Record<Lang, Record<string, string>>;
 
 const registrationText = {
   en: {
@@ -332,10 +368,40 @@ function HomePage({ lang }: { lang: Lang }) {
         </div>
       </section>
 
+      <ResearchSurvey lang={lang} />
+
       <VenueFeature lang={lang} />
 
       <ContactBand lang={lang} />
     </>
+  );
+}
+
+function ResearchSurvey({ lang }: { lang: Lang }) {
+  const survey = researchSurveyText[lang];
+
+  return (
+    <section className="research-survey section-pad text-white section-motion">
+      <div className="site-shell relative z-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+        <div className="max-w-4xl">
+          <div className="fine-label text-gold-500">{survey.eyebrow}</div>
+          <h2 className="mt-4 text-3xl font-black sm:text-4xl">{survey.title}</h2>
+          <p className="mt-6 text-lg font-bold text-white">{survey.greeting}</p>
+          <p className="mt-3 max-w-3xl text-base leading-7 text-white/78">{survey.description}</p>
+          <p className="mt-3 max-w-3xl text-base leading-7 text-white/78">{survey.collaboration}</p>
+        </div>
+        <a
+          href={researchSurveyUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="action-button inline-flex min-h-14 items-center justify-center gap-3 rounded-lg bg-gold-500 px-7 py-4 text-sm font-black text-ink transition hover:bg-gold-100"
+        >
+          <ClipboardList className="h-5 w-5" />
+          {survey.button}
+          <MoveUpRight className="h-4 w-4" />
+        </a>
+      </div>
+    </section>
   );
 }
 

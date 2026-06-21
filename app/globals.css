@@ -351,6 +351,26 @@ select,
   overflow: hidden;
 }
 
+.research-survey {
+  background:
+    linear-gradient(115deg, rgba(199, 161, 74, 0.16), transparent 38%),
+    linear-gradient(135deg, #071a33, #0a1f44 56%, #0d4a79);
+  overflow: hidden;
+  position: relative;
+}
+
+.research-survey::after {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 46px 46px;
+  content: "";
+  inset: 0;
+  mask-image: linear-gradient(110deg, transparent 4%, black 50%, transparent 96%);
+  pointer-events: none;
+  position: absolute;
+}
+
 .contact-panel::after {
   animation: scan-sweep 7.4s ease-in-out infinite;
   background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.12), transparent);
