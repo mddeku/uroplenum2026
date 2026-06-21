@@ -1008,11 +1008,7 @@ export const faculty = [
     ["Alimzhan Kalimkulov", "Калимкулов Алимжан Мейрамбекович", "Қалимқұлов Әлімжан Мейрамбекұлы"],
     ["Ali Talyshinskii", "Талышинский Али Эльманович", "Талышинский Али Эльманұлы"],
     ["Asylan Nurgaliyev", "Нургалиев Асылан Асылбекович", "Нұрғалиев Асылан Асылбекұлы"],
-    ["Zhaslan Amirzhanov", "Амиржанов Жаслан Нурланович", "Әміржанов Жаслан Нұрланұлы"],
-    ["Viktoria Shaderkina", "Шадеркина Виктория Анатольевна", "Шадеркина Виктория Анатольевна"],
-    ["Nikolay Baykov", "Байков Николай Александрович", "Байков Николай Александрович"],
-    ["Stanislav Ali", "Али Станислав Хусейнович", "Али Станислав Хусейнович"],
-    ["Roman Andreev", "Андреев Роман Юрьевич", "Андреев Роман Юрьевич"]
+    ["Zhaslan Amirzhanov", "Амиржанов Жаслан Нурланович", "Әміржанов Жаслан Нұрланұлы"]
   ].map(([name, ruName, kzName]) => ({
     name,
     ruName,
@@ -1030,7 +1026,12 @@ export const faculty = [
     ["Wang Jianye", "Wang Jianye", "Wang Jianye"],
     ["Sam Ward", "Sam Ward", "Sam Ward"],
     ["Mavlyanov Farkhod", "Mavlyanov Farkhod", "Mavlyanov Farkhod"],
-    ["Selcuk Guven", "Selcuk Guven", "Selcuk Guven"]
+    ["Selcuk Guven", "Selcuk Guven", "Selcuk Guven"],
+    ["Viktoria Shaderkina", "Шадеркина Виктория Анатольевна", "Шадеркина Виктория Анатольевна"],
+    ["Stanislav Ali", "Али Станислав Хусейнович", "Али Станислав Хусейнович"],
+    ["Dmitry Gorelov", "Горелов Дмитрий Сергеевич", "Горелов Дмитрий Сергеевич"],
+    ["Nikolay Baykov", "Байков Николай Александрович", "Байков Николай Александрович"],
+    ["Roman Andreev", "Андреев Роман Юрьевич", "Андреев Роман Юрьевич"]
   ].map(([name, ruName, kzName]) => ({
     name,
     ruName,
