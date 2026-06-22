@@ -31,6 +31,7 @@ import {
   pagePath,
   localizeProgramLabel,
   programDetails,
+  sponsorLogos,
   venueFacts,
   venueImage,
   type Lang,
@@ -371,6 +372,8 @@ function HomePage({ lang }: { lang: Lang }) {
       <ResearchSurvey lang={lang} />
 
       <VenueFeature lang={lang} />
+
+      <OrganizersSection lang={lang} />
 
       <ContactBand lang={lang} />
     </>
@@ -860,6 +863,28 @@ function VenueFeature({ lang }: { lang: Lang }) {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OrganizersSection({ lang }: { lang: Lang }) {
+  const t = copy[lang];
+
+  return (
+    <section className="section-pad bg-mist section-motion">
+      <div className="site-shell">
+        <SectionTitle eyebrow="UROPLENUM 2026" title={t.organizers} text={t.organizersText} align="center" />
+        <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
+          {sponsorLogos.map((logo) => (
+            <div
+              key={logo.src}
+              className="sponsor-tile flex min-h-52 items-center justify-center rounded-lg border border-slate-200 bg-white p-7 shadow-card"
+            >
+              <SponsorLogo src={logo.src} alt={logo.alt} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

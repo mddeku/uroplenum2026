@@ -604,10 +604,9 @@ export const pagePath: Record<PageKey, string> = {
 export const mapUrl = "https://2gis.kz/astana/firm/70000001033293245";
 
 export const sponsorLogos = [
-  { src: "/sponsors/sponsor-4-aoqa.png", alt: "AOQa" },
+  { src: "/sponsors/sponsor-3.png", alt: "Astana Medical University" },
   { src: "/sponsors/sponsor-2.png", alt: "Astana Urologists and Andrologists Society" },
-  { src: "/sponsors/sponsor-ministry-health.webp", alt: "Ministry of Health of the Republic of Kazakhstan" },
-  { src: "/sponsors/sponsor-astana-health.webp", alt: "Astana Public Health Department" }
+  { src: "/sponsors/sponsor-4-aoqa.png", alt: "AOQa" }
 ];
 
 export const copy = {
@@ -629,8 +628,8 @@ export const copy = {
     scientificText: "Endourology, uro-oncology, men's health, pediatric urology and case-based discussions.",
     collaboration: "Professional Collaboration",
     collaborationText: "A collegial forum for national societies, universities, hospitals and industry partners.",
-    organizers: "Organizers / Partners",
-    organizersText: "Official organizers and partners of the plenum.",
+    organizers: "Organizers",
+    organizersText: "Official organizers of UROPLENUM 2026.",
     contactTitle: "Planning to attend UROPLENUM 2026?",
     contactText: "Participant registration is open until July 2, 2026 at 12:00.",
     viewProgram: "View Program",
@@ -682,8 +681,8 @@ export const copy = {
     scientificText: "Эндоурология, онкоурология, мужское здоровье, детская урология и клинические дискуссии.",
     collaboration: "Профессиональное сотрудничество",
     collaborationText: "Коллегиальная площадка для обществ, университетов, клиник и индустриальных партнеров.",
-    organizers: "Организаторы / Партнеры",
-    organizersText: "Официальные организаторы и партнеры пленума.",
+    organizers: "Организаторы",
+    organizersText: "Официальные организаторы UROPLENUM 2026.",
     contactTitle: "Планируете участие в UROPLENUM 2026?",
     contactText: "Регистрация участников открыта до 2 июля 2026 года, 12:00.",
     viewProgram: "Смотреть программу",
@@ -735,8 +734,8 @@ export const copy = {
     scientificText: "Эндоурология, онкоурология, ерлер денсаулығы, балалар урологиясы және клиникалық талқылаулар.",
     collaboration: "Кәсіби ынтымақтастық",
     collaborationText: "Қоғамдар, университеттер, клиникалар және индустриялық серіктестер үшін әріптестік алаңы.",
-    organizers: "Ұйымдастырушылар / Серіктестер",
-    organizersText: "Пленумның ресми ұйымдастырушылары мен серіктестері.",
+    organizers: "Ұйымдастырушылар",
+    organizersText: "UROPLENUM 2026 ресми ұйымдастырушылары.",
     contactTitle: "UROPLENUM 2026 қатысуды жоспарлайсыз ба?",
     contactText: "Қатысушыларды тіркеу 2026 жылғы 2 шілде сағат 12:00-ге дейін ашық.",
     viewProgram: "Бағдарламаны көру",
