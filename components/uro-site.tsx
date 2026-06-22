@@ -447,8 +447,8 @@ function FacultyPage({ lang }: { lang: Lang }) {
   const t = copy[lang];
   const groups = [
     { id: "international", title: t.internationalFaculty },
-    { id: "kazakhstan", title: t.kazakhstanFaculty },
-    { id: "official", title: t.officialGuests }
+    { id: "official", title: t.officialGuests },
+    { id: "kazakhstan", title: t.kazakhstanFaculty }
   ] as const;
 
   return (
