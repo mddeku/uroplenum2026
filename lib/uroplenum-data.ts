@@ -961,13 +961,23 @@ export const programDetails = [
   }
 ];
 
+const facultyCountries = {
+  kazakhstan: text("Kazakhstan", "Казахстан", "Қазақстан"),
+  belgium: text("Belgium", "Бельгия", "Бельгия"),
+  turkey: text("Türkiye", "Турция", "Түркия"),
+  lithuania: text("Lithuania", "Литва", "Литва"),
+  china: text("China", "Китай", "Қытай"),
+  uzbekistan: text("Uzbekistan", "Узбекистан", "Өзбекстан"),
+  russia: text("Russia", "Россия", "Ресей")
+} as const;
+
 export const faculty = [
   {
     name: "Timur Muratov",
     ruName: "Муратов Тимур Муратович",
     kzName: "Мұратов Тимур Мұратұлы",
     role: text("Vice Minister of Healthcare of the Republic of Kazakhstan", "Вице-министр здравоохранения Республики Казахстан", "Қазақстан Республикасы Денсаулық сақтау вице-министрі"),
-    city: text("Astana", "Астана", "Астана"),
+    city: facultyCountries.kazakhstan,
     topic: text("Welcome remarks", "Приветственное слово", "Құттықтау сөзі"),
     group: "official"
   },
@@ -976,7 +986,7 @@ export const faculty = [
     ruName: "Турмухамбетова Анар Акылбековна",
     kzName: "Тұрмұхамбетова Анар Ақылбекқызы",
     role: text("Rector of Astana Medical University", "Ректор Медицинского университета Астана", "Астана медицина университетінің ректоры"),
-    city: text("Astana", "Астана", "Астана"),
+    city: facultyCountries.kazakhstan,
     topic: text("Academic welcome", "Академическое приветствие", "Академиялық құттықтау"),
     group: "official"
   },
@@ -985,7 +995,7 @@ export const faculty = [
     ruName: "Тулеуова Айнур Сакеновна",
     kzName: "Төлеуова Айнұр Сәкенқызы",
     role: text("Head of Astana City Health Department", "Глава Управления здравоохранения г. Астана", "Астана қаласы Денсаулық сақтау басқармасының басшысы"),
-    city: text("Astana", "Астана", "Астана"),
+    city: facultyCountries.kazakhstan,
     topic: text("Healthcare leadership", "Развитие здравоохранения", "Денсаулық сақтауды дамыту"),
     group: "official"
   },
@@ -994,50 +1004,83 @@ export const faculty = [
     ruName: "Алчинбаев Мирзакарим Каримович",
     kzName: "Алчинбаев Мирзакарим Каримұлы",
     role: text("Chief Urologist of the Republic of Kazakhstan", "Главный уролог Республики Казахстан", "Қазақстан Республикасының бас урологы"),
-    city: text("Kazakhstan", "Казахстан", "Қазақстан"),
+    city: facultyCountries.kazakhstan,
     topic: text("Modern urology in Kazakhstan", "Современная урология Казахстана", "Қазақстандағы заманауи урология"),
     group: "kazakhstan"
   },
   ...[
-    ["Chingis Baimenov", "Байменов Чингис Болатович", "Байменов Шыңғыс Болатұлы"],
-    ["Khusan Umurzakov", "Умурзаков Хусан Талипбаевич", "Умурзаков Хусан Талипбайұлы"],
-    ["Anvar Davranov", "Давранов Анвар Жангирович", "Давранов Анвар Жангирұлы"],
-    ["Bulat Shalekenov", "Шалекенов Булат Уахитович", "Шалекенов Болат Уахитұлы"],
-    ["Kasymkhan Sultanbekov", "Султанбеков Касымхан Адылханович", "Сұлтанбеков Қасымхан Әділханұлы"],
-    ["Ardak Ainakulov", "Айнакулов Ардак Жаксылыкович", "Айнакулов Ардақ Жақсылықұлы"],
-    ["Alimzhan Kalimkulov", "Калимкулов Алимжан Мейрамбекович", "Қалимқұлов Әлімжан Мейрамбекұлы"],
-    ["Ali Talyshinskii", "Талышинский Али Эльманович", "Талышинский Али Эльманұлы"],
-    ["Asylan Nurgaliyev", "Нургалиев Асылан Асылбекович", "Нұрғалиев Асылан Асылбекұлы"],
-    ["Zhaslan Amirzhanov", "Амиржанов Жаслан Нурланович", "Әміржанов Жаслан Нұрланұлы"]
-  ].map(([name, ruName, kzName]) => ({
-    name,
+    ["Айнакулов Ардак Джаксылыкович", "Айнакулов Ардақ Жақсылықұлы"],
+    ["Аканов Азамат Ержанович"],
+    ["Амиржанов Жаслан Нурланович", "Әміржанов Жаслан Нұрланұлы"],
+    ["Асанбек Даулет"],
+    ["Ахметов Ернар Ерболатович"],
+    ["Багитжанов Темирлан Женисович"],
+    ["Байменов Чингис Булатович", "Байменов Шыңғыс Болатұлы"],
+    ["Божченко Дмитрий Александрович"],
+    ["Гасанов Зиё Бахшиевич"],
+    ["Гульманов Еркебулан Манасович"],
+    ["Давранов Анвар Жангирович", "Давранов Анвар Жангирұлы"],
+    ["Даукенов Багдат Азимбаевич"],
+    ["Дисаенко Ксения Сергеевна"],
+    ["Дуйсенбинов Еркин Разаевич"],
+    ["Жанабек Асет"],
+    ["Жанбырбекулы Уланбек"],
+    ["Закарья Олжас Мұратұлы"],
+    ["Ирисматов Даврон Розматович"],
+    ["Искаков Ербол Амангельдинович"],
+    ["Калимкулов Алимжан Мейрамбекулы", "Қалимқұлов Әлімжан Мейрамбекұлы"],
+    ["Калыкбаева Ардак"],
+    ["Каримов Адиль Муслимович"],
+    ["Касымов Бахтияр Галыулы"],
+    ["Конакбаев Ескендир Жандаралыевич"],
+    ["Кулмаханов Нурлыбек Бурибаевич"],
+    ["Курмангалиев Олег Маратович"],
+    ["Леонтьев Андриан Олегович"],
+    ["Нугманов Чингиз Аскарович"],
+    ["Нургалиев Асылан Асылбекович", "Нұрғалиев Асылан Асылбекұлы"],
+    ["Нургалиев Нуржан Серикович"],
+    ["Омарбаев Рустам Токенович"],
+    ["Омарбеков Арман Капарович"],
+    ["Оспанов Даулет Серикович"],
+    ["Сатанов Бауыржан Ермекович"],
+    ["Султанбеков Касымхан Адылханович", "Сұлтанбеков Қасымхан Әділханұлы"],
+    ["Талышинский Али Эльманович", "Талышинский Али Эльманұлы"],
+    ["Тасжуреков Аскар Онгарович"],
+    ["Умурзаков Хусан Талипбаевич", "Умурзаков Хусан Талипбайұлы"],
+    ["Хайрли Гафур Зинурович"],
+    ["Шалекенов Булат Уахитович", "Шалекенов Болат Уахитұлы"],
+    ["Шерханов Равиль Таирханович"]
+  ].map(([ruName, kzName]) => ({
+    name: localizeProgramLabel(ruName, "en"),
     ruName,
-    kzName,
+    kzName: kzName ?? localizeProgramLabel(ruName, "kz"),
     role: text("Speaker", "Спикер", "Спикер"),
-    city: text("Kazakhstan", "Казахстан", "Қазақстан"),
+    city: facultyCountries.kazakhstan,
     topic: text("Scientific session", "Научная секция", "Ғылыми секция"),
     group: "kazakhstan" as const
   })),
-  ...[
-    ["Yongda Liu", "Yongda Liu", "Yongda Liu"],
-    ["Kemal Sarica", "Kemal Sarica", "Kemal Sarica"],
-    ["Ege Can Serefoglu", "Ege Can Serefoglu", "Ege Can Serefoglu"],
-    ["Gilvydas Verkauskas", "Gilvydas Verkauskas", "Gilvydas Verkauskas"],
-    ["Wang Jianye", "Wang Jianye", "Wang Jianye"],
-    ["Sam Ward", "Sam Ward", "Sam Ward"],
-    ["Mavlyanov Farkhod", "Mavlyanov Farkhod", "Mavlyanov Farkhod"],
-    ["Selcuk Guven", "Selcuk Guven", "Selcuk Guven"],
-    ["Viktoria Shaderkina", "Шадеркина Виктория Анатольевна", "Шадеркина Виктория Анатольевна"],
-    ["Stanislav Ali", "Али Станислав Хусейнович", "Али Станислав Хусейнович"],
-    ["Dmitry Gorelov", "Горелов Дмитрий Сергеевич", "Горелов Дмитрий Сергеевич"],
-    ["Nikolay Baykov", "Байков Николай Александрович", "Байков Николай Александрович"],
-    ["Roman Andreev", "Андреев Роман Юрьевич", "Андреев Роман Юрьевич"]
-  ].map(([name, ruName, kzName]) => ({
+  ...([
+    ["Yongda Liu", "Yongda Liu", "Yongda Liu", facultyCountries.china],
+    ["Kemal Sarica", "Kemal Sarica", "Kemal Sarica", facultyCountries.turkey],
+    ["Ege Can Serefoglu", "Ege Can Serefoglu", "Ege Can Serefoglu", facultyCountries.turkey],
+    ["Gilvydas Verkauskas", "Gilvydas Verkauskas", "Gilvydas Verkauskas", facultyCountries.lithuania],
+    ["Wang Jianye", "Wang Jianye", "Wang Jianye", facultyCountries.china],
+    ["Sam Ward", "Sam Ward", "Sam Ward", facultyCountries.belgium],
+    ["Mavlyanov Farkhod", "Mavlyanov Farkhod", "Mavlyanov Farkhod", facultyCountries.uzbekistan],
+    ["Selcuk Guven", "Selcuk Guven", "Selcuk Guven", facultyCountries.turkey],
+    ["Viktoria Shaderkina", "Шадеркина Виктория Анатольевна", "Шадеркина Виктория Анатольевна", facultyCountries.russia],
+    ["Stanislav Ali", "Али Станислав Хусейнович", "Али Станислав Хусейнович", facultyCountries.russia],
+    ["Dmitry Gorelov", "Горелов Дмитрий Сергеевич", "Горелов Дмитрий Сергеевич", facultyCountries.russia],
+    ["Nikolay Baykov", "Байков Николай Александрович", "Байков Николай Александрович", facultyCountries.russia],
+    ["Pavel Kyzlasov", "Кызласов Павел Сергеевич", "Кызласов Павел Сергеевич", facultyCountries.russia],
+    ["Refat Amdiy", "Амдий Рефат Эльдарович", "Амдий Рефат Эльдарович", facultyCountries.russia],
+    ["Roman Andreev", "Андреев Роман Юрьевич", "Андреев Роман Юрьевич", facultyCountries.russia]
+  ] satisfies [string, string, string, LocalText][]).map(([name, ruName, kzName, country]) => ({
     name,
     ruName,
     kzName,
     role: text("Speaker", "Спикер", "Спикер"),
-    city: text("International", "Международный эксперт", "Халықаралық сарапшы"),
+    city: country,
     topic: text("Specialty lecture", "Профильный доклад", "Бейінді баяндама"),
     group: "international" as const
   }))
