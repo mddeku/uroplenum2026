@@ -89,7 +89,7 @@ const registrationText = {
     warningText:
       "Registration for the event closes on July 2 at 12:00.\n\nDear participants, please be extremely attentive when completing this form.\n\nAll certificates are generated and sent automatically. If there is an error in your full name or email address, the system may not send the document correctly, or the certificate may contain typos.\n\nBefore submitting the form, please carefully check that your data is written correctly.",
     fullName: "Full name",
-    iin: "IIN",
+    iin: "Individual Identification Number (IIN)",
     workplace: "Place of work",
     phone: "Phone number",
     email: "Email for certificates",
@@ -113,7 +113,7 @@ const registrationText = {
     warningText:
       "Регистрация на мероприятие закрывается 2 июля в 12:00.\n\nУважаемые участники!\nПожалуйста, будьте предельно внимательны при заполнении данной формы.\n\nВсе сертификаты генерируются и рассылаются автоматически. Если вы допустите ошибку в ФИО или адресе электронной почты, система не сможет корректно отправить документ, либо в самом сертификате будут опечатки.\n\nПеред отправкой формы обязательно перепроверьте правильность написания ваших данных.",
     fullName: "ФИО",
-    iin: "ИИН",
+    iin: "Индивидуальный идентификационный номер (ИИН)",
     workplace: "Место работы",
     phone: "Номер телефона",
     email: "Электронная почта для сертификатов",
@@ -137,7 +137,7 @@ const registrationText = {
     warningText:
       "Іс-шараға тіркеу 2 шілде күні сағат 12:00-де жабылады.\n\nҚұрметті қатысушылар!\nОсы форманы толтырғанда өте мұқият болыңыз.\n\nБарлық сертификаттар автоматты түрде қалыптастырылып, жіберіледі. Егер Т.А.Ә. немесе электрондық пошта мекенжайында қате жіберілсе, жүйе құжатты дұрыс жібере алмауы мүмкін немесе сертификатта қате жазулар болуы ықтимал.\n\nФорманы жібермес бұрын деректеріңіздің дұрыс жазылғанын міндетті түрде қайта тексеріңіз.",
     fullName: "Т.А.Ә.",
-    iin: "ЖСН",
+    iin: "Жеке сәйкестендіру нөмірі (ЖСН)",
     workplace: "Жұмыс орны",
     phone: "Телефон нөмірі",
     email: "Сертификат жіберілетін электрондық пошта",
@@ -266,7 +266,7 @@ function Navbar({
             type="button"
             className="fixed right-4 top-[18px] z-[60] flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white/10 lg:hidden"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle navigation"
+            aria-label={t.menuToggle}
           >
             {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -344,8 +344,8 @@ function HomePage({ lang }: { lang: Lang }) {
           <div className="grid gap-4 sm:grid-cols-2">
             {[
               ["1", lang === "en" ? "Congress day" : lang === "ru" ? "День пленума" : "Пленум күні"],
-              ["5", lang === "en" ? "Scientific sections" : lang === "ru" ? "Научных секций" : "Ғылыми секция"],
-              ["40+", lang === "en" ? "Faculty members" : lang === "ru" ? "Спикеров" : "Спикер"],
+              ["5", lang === "en" ? "Scientific sections" : lang === "ru" ? "Научных секций" : "Ғылыми секциялар"],
+              ["40+", lang === "en" ? "Speakers" : lang === "ru" ? "Спикеров" : "Спикерлер"],
               [lang === "en" ? "Astana" : "Астана", lang === "en" ? "Host city" : lang === "ru" ? "Город проведения" : "Өтетін қала"]
             ].map(([value, label]) => (
               <div key={label} className="metric-card surface-card p-6">
@@ -488,7 +488,7 @@ function VenuePage({ lang }: { lang: Lang }) {
       <Hero
         lang={lang}
         title={t.venueTitle}
-        subtitle="Congress-center QazExpoCongress"
+        subtitle={t.venueTitle}
         text={t.venueIntro}
         eyebrow={nav[lang].venue}
         meta={lang === "en" ? "12 Heydar Aliyev Street | Astana" : lang === "ru" ? "ул. Гейдар Алиева 12 | Астана" : "Гейдар Алиев көшесі, 12 | Астана"}
@@ -593,10 +593,10 @@ function RegistrationPage({ lang }: { lang: Lang }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
-      const result = await response.json().catch(() => ({}));
+      await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(result?.error || rt.error);
+        throw new Error(rt.error);
       }
 
       setStatus("success");
@@ -811,12 +811,12 @@ function Hero({
         <div className="hero-dashboard hidden lg:block">
           <div className="dashboard-card dashboard-card-main">
             <div className="flex items-center justify-between">
-              <span className="fine-label text-gold-500">Live congress</span>
+              <span className="fine-label text-gold-500">{copy[lang].liveCongress}</span>
               <Sparkles className="h-5 w-5 text-gold-500" />
             </div>
             <div className="mt-8 grid grid-cols-2 gap-3">
-              <HeroMetric value="40+" label={lang === "en" ? "Speakers" : lang === "ru" ? "Спикеров" : "Спикер"} />
-              <HeroMetric value="5" label={lang === "en" ? "Sections" : lang === "ru" ? "Секций" : "Секция"} />
+              <HeroMetric value="40+" label={lang === "en" ? "Speakers" : lang === "ru" ? "Спикеров" : "Спикерлер"} />
+              <HeroMetric value="5" label={lang === "en" ? "Sections" : lang === "ru" ? "Секций" : "Секциялар"} />
               <HeroMetric value="1" label={lang === "en" ? "Day" : lang === "ru" ? "День" : "Күн"} />
               <HeroMetric value={lang === "en" ? "Astana" : "Астана"} label={lang === "en" ? "City" : lang === "ru" ? "Город" : "Қала"} />
             </div>
@@ -848,7 +848,7 @@ function VenueFeature({ lang }: { lang: Lang }) {
     <section className="section-pad bg-white section-motion">
       <div className="site-shell grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div className="venue-frame overflow-hidden rounded-lg shadow-soft">
-          <img src={venueImage} alt="QazExpoCongress Congress Center" className="aspect-[16/10] w-full object-cover" />
+          <img src={venueImage} alt={t.venueImageAlt} className="aspect-[16/10] w-full object-cover" />
         </div>
         <div>
           <SectionTitle eyebrow={nav[lang].venue} title={t.venueTitle} text={t.venueAboutText} />
@@ -997,12 +997,12 @@ function ContactBand({ lang }: { lang: Lang }) {
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="rounded-lg bg-white/8 p-5">
                 <Mail className="h-5 w-5 text-gold-500" />
-                <div className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-white/50">Email</div>
+                <div className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-white/50">{t.emailLabel}</div>
                 <div className="mt-1 text-sm font-bold">{t.email}</div>
               </div>
               <div className="rounded-lg bg-white/8 p-5">
                 <MapPin className="h-5 w-5 text-gold-500" />
-                <div className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-white/50">Venue</div>
+                <div className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-white/50">{t.venueLabel}</div>
                 <div className="mt-1 text-sm font-bold">QazExpoCongress</div>
               </div>
             </div>

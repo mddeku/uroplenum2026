@@ -98,7 +98,7 @@ const eventJsonLd = {
   image: ["https://uroplenum.com/images/uroplenum-hero.png"],
   location: {
     "@type": "Place",
-    name: "Congress-center QazExpoCongress",
+    name: "QazExpoCongress Congress Center",
     address: {
       "@type": "PostalAddress",
       streetAddress: "12 Heydar Aliyev Street",
