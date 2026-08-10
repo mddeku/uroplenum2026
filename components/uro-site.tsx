@@ -116,7 +116,7 @@ const researchSurveys = [
 ] satisfies Array<{ url: string; content: Record<Lang, Record<string, string>> }>;
 
 
-const resolutionText = {
+const resolutionTextRu = {
   eyebrow: "Пост-релиз",
   title: "Резолюция Пленума урологов Республики Казахстан",
   announcement:
@@ -178,6 +178,101 @@ const resolutionText = {
       ]
     }
   ]
+};
+
+
+const resolutionText: Record<Lang, typeof resolutionTextRu> = {
+  ru: resolutionTextRu,
+  en: {
+    eyebrow: "Post-release",
+    title: "Resolution of the Plenum of Urologists of the Republic of Kazakhstan",
+    announcement:
+      "On 3 July, the Plenum of Urologists of Kazakhstan took place in Astana, bringing together more than 200 delegates. The following resolution was adopted as a result of the meeting.",
+    preamble: [
+      "The participants of the Plenum of Urologists of the Republic of Kazakhstan - leading specialists in urology, oncourology, paediatric urology, andrology, reconstructive urology, endourology and transplantation, representatives of medical universities, research institutions, practical healthcare, professional associations and international experts - discussed the current state of urological care in Kazakhstan, achievements in domestic and global urology, and prospects for high-tech care, medical education and research.",
+      "They note that Kazakhstan's urological service has strong professional and scientific potential, actively adopts modern minimally invasive technologies, expands international cooperation and shows steady development. At the same time, further consolidation of the professional community, improved clinical protocols, broader access to modern surgical technology, development of young specialists and integration into the global scientific community remain necessary.",
+      "To further develop urological care in the Republic of Kazakhstan, the participants recommend the following."
+    ],
+    sections: [
+      { title: "1. Development of the professional community", items: [
+        "1.1. Hold the National Congress of Urologists of the Republic of Kazakhstan annually as the country's principal professional platform.",
+        "1.2. Establish a unified scientific programme for the Congress with mandatory participation from all major fields of contemporary urology: oncourology, endourology, paediatric urology, andrology and reconstructive urology, urological transplantation, female and functional urology, urogenital reconstruction and other specialised sections.",
+        "1.3. Continue building interdisciplinary collaboration among urologists, oncologists, nephrologists, transplant specialists, radiologists, reproductive specialists, gynaecologists, surgeons and other related professionals."
+      ]},
+      { title: "2. International cooperation", items: [
+        "2.1. Actively develop scientific and educational cooperation with professional societies in the Turkic world, Central Asia and neighbouring countries.",
+        "2.2. Expand joint educational programmes, specialist exchanges, international masterclasses, schools, symposia and joint scientific events.",
+        "2.3. Support the participation of Kazakhstani urologists in leading international professional organisations, joint research projects and exchanges of modern technologies."
+      ]},
+      { title: "3. Improving clinical practice", items: [
+        "3.1. Ensure the ongoing work of expert groups to review, update and implement clinical protocols for diagnosing and treating urological diseases, based on evidence-based medicine and current international guidelines.",
+        "3.2. Accelerate the introduction of modern high-tech diagnostic and treatment methods into practical healthcare in Kazakhstan.",
+        "3.3. Continue work with the Ministry of Health, the Social Health Insurance Fund and other public bodies to include modern urological technologies in compulsory social health insurance funding. Priority technologies include laser enucleation for benign prostatic hyperplasia, flexible ureterorenoscopy for urolithiasis, and other contemporary minimally invasive endoscopic interventions supported by international guidelines and evidence-based medicine."
+      ]},
+      { title: "4. Development of young specialists", items: [
+        "4.1. Recognise the development of young urologists as a strategic priority for the professional community.",
+        "4.2. Establish a system to identify and support the most talented young urologists, residents, master's and doctoral students, and early-career researchers in Kazakhstan.",
+        "4.3. Develop mechanisms to fund overseas placements for promising young specialists through professional-community resources, sponsorship, educational grants and international partnerships at leading global urology centres.",
+        "4.4. Expand schools for young urologists, educational courses, surgical masterclasses, mentorship programmes and regular scientific and practical seminars."
+      ]},
+      { title: "5. Development of science", items: [
+        "5.1. Promote publication activity among Kazakhstani urologists, especially young specialists, through training in clinical research, medical statistics, academic writing and scientific publishing.",
+        "5.2. Encourage publication of domestic research findings in highly ranked international peer-reviewed journals.",
+        "5.3. Actively develop multicentre clinical research involving leading urology centres in Kazakhstan.",
+        "5.4. Expand the participation of national institutions in international scientific projects, patient registries and clinical research.",
+        "5.5. Create conditions for national scientific consortia in priority areas of urology and andrology."
+      ]},
+      { title: "6. Final provisions", items: [
+        "The participants are confident that implementation of this resolution will further develop urological care in Kazakhstan, improve access to modern high-tech treatment, strengthen the international standing of domestic urology, establish an effective training system for young specialists and ensure sustainable scientific development.",
+        "The professional urological community of Kazakhstan confirms its readiness for constructive cooperation with the Ministry of Health, medical universities, research institutions, international professional societies and all interested parties to achieve the strategic goal of improving the quality, accessibility and effectiveness of urological care for the population."
+      ]}
+    ]
+  },
+  kz: {
+    eyebrow: "Баспасөз релизі",
+    title: "Қазақстан Республикасы урологтары пленумының қарары",
+    announcement:
+      "3 шілде күні Астана қаласында Қазақстан урологтарының пленумы өтіп, оған 200-ден астам делегат қатысты. Пленум қорытындысы бойынша осы қарар қабылданды.",
+    preamble: [
+      "Қазақстан Республикасы урологтары пленумына урология, онкоурология, балалар урологиясы, андрология, реконструктивті урология, эндоурология, трансплантология салаларының жетекші мамандары, медициналық университеттер, ғылыми ұйымдар, практикалық денсаулық сақтау, кәсіби қауымдастықтар өкілдері және шетелдік сарапшылар қатысып, еліміздегі урологиялық қызметтің қазіргі жай-күйін, отандық және әлемдік урология жетістіктерін, жоғары технологиялық көмекті, медициналық білім мен ғылыми зерттеулерді дамыту перспективаларын талқылады.",
+      "Қатысушылар Қазақстан Республикасының урологиялық қызметі кадрлық, ғылыми және практикалық әлеуеті жоғары екенін, заманауи аз инвазиялық технологияларды белсенді енгізіп, халықаралық ынтымақтастықты кеңейтіп, тұрақты дамып келе жатқанын атап өтті. Сонымен қатар кәсіби қауымдастықты одан әрі біріктіру, клиникалық хаттамаларды жетілдіру, заманауи хирургиялық технологиялардың қолжетімділігін арттыру, жас мамандардың ғылыми әлеуетін дамыту және отандық урологияны әлемдік ғылыми кеңістікке кіріктіру қажет.",
+      "Қазақстан Республикасының урологиялық қызметін одан әрі дамыту мақсатында пленум қатысушылары төмендегіні ұсынады."
+    ],
+    sections: [
+      { title: "1. Кәсіби қауымдастықты дамыту", items: [
+        "1.1. Қазақстан Республикасы урологтарының Ұлттық конгресін елдің басты кәсіби алаңы ретінде жыл сайын өткізу.",
+        "1.2. Қазіргі урологияның барлық негізгі бағыттары: онкоурология, эндоурология, балалар урологиясы, андрология және реконструктивті урология, урологиялық трансплантология, әйелдер және функционалдық урология, урогениталдық реконструкция және басқа да бейінді секциялар мамандары міндетті түрде қатысатын Конгрестің бірыңғай ғылыми бағдарламасын қалыптастыру.",
+        "1.3. Урологтар, онкологтар, нефрологтар, трансплантологтар, радиологтар, репродуктологтар, гинекологтар, хирургтар және аралас мамандықтар мамандары арасындағы пәнаралық өзара іс-қимылды дамытуды жалғастыру."
+      ]},
+      { title: "2. Халықаралық ынтымақтастық", items: [
+        "2.1. Түркі әлемі елдерінің, Орталық Азия мемлекеттерінің және басқа көршілес елдердің кәсіби қоғамдарымен ғылыми және білім беру ынтымақтастығын белсенді дамыту.",
+        "2.2. Бірлескен білім беру бағдарламаларын, мамандар алмасуын, халықаралық шеберлік сабақтарын, мектептерді, симпозиумдар мен бірлескен ғылыми іс-шараларды кеңейту.",
+        "2.3. Қазақстандық урологтардың жетекші халықаралық кәсіби ұйымдардың жұмысына қатысуын, бірлескен зерттеу жобаларын және заманауи технологиялар алмасуын қолдау."
+      ]},
+      { title: "3. Клиникалық практиканы жетілдіру", items: [
+        "3.1. Дәлелді медицина қағидаттары мен заманауи халықаралық ұсынымдар негізінде урологиялық ауруларды диагностикалау және емдеу клиникалық хаттамаларын қайта қарау, жаңарту және енгізу жөніндегі сарапшылық топтардың тұрақты жұмысын қамтамасыз ету.",
+        "3.2. Қазақстан Республикасының практикалық денсаулық сақтау жүйесіне заманауи жоғары технологиялық диагностика және емдеу әдістерін енгізуді жеделдету.",
+        "3.3. Денсаулық сақтау министрлігімен, Әлеуметтік медициналық сақтандыру қорымен және басқа мемлекеттік органдармен заманауи урологиялық технологияларды міндетті әлеуметтік медициналық сақтандыру шеңберіндегі қаржыландыру жүйесіне енгізу жөніндегі жұмысты жалғастыру. Басым технологиялар: қуықасты безінің қатерсіз гиперплазиясын лазерлік энуклеациялау, несеп-тас ауруын емдеудегі икемді уретерореноскопия және халықаралық ұсынымдар мен дәлелді медицина қағидаттарымен расталған өзге де заманауи аз инвазиялық эндоскопиялық араласулар."
+      ]},
+      { title: "4. Жас мамандарды дамыту", items: [
+        "4.1. Жас урологтарды дамытуды кәсіби қауымдастық қызметінің стратегиялық бағыттарының бірі деп санау.",
+        "4.2. Қазақстанның ең талантты жас урологтарын, резиденттерін, магистранттарын, докторанттарын және жас ғалымдарын анықтау мен қолдау жүйесін ұйымдастыру.",
+        "4.3. Перспективалы жас мамандардың әлемдік жетекші урологиялық орталықтарда тағылымдамадан өтуін кәсіби қауымдастық қаражаты, демеушілік қолдау, білім беру гранттары және халықаралық серіктестік бағдарламалары есебінен қаржыландыру тетіктерін әзірлеу.",
+        "4.4. Жас урологтар мектептерін, білім беру курстарын, хирургиялық шеберлік сабақтарын, тәлімгерлік бағдарламаларын және тұрақты ғылыми-практикалық семинарларды кеңейту."
+      ]},
+      { title: "5. Ғылымды дамыту", items: [
+        "5.1. Клиникалық зерттеулер, медициналық статистика, академиялық жазу және ғылыми жарияланымдарды дайындау бойынша білім беру бағдарламаларын ұйымдастыру арқылы, ең алдымен жас мамандардың, қазақстандық урологтардың жарияланымдық белсенділігін арттыруға жәрдемдесу.",
+        "5.2. Отандық зерттеулердің нәтижелерін жоғары рейтингті халықаралық рецензияланатын ғылыми журналдарда жариялауды ынталандыру.",
+        "5.3. Қазақстан Республикасының жетекші урологиялық орталықтары қатысатын көпорталықты клиникалық зерттеулерді белсенді дамыту.",
+        "5.4. Отандық мекемелердің халықаралық ғылыми жобаларға, пациенттер тізілімдеріне және клиникалық зерттеулерге қатысуын кеңейту.",
+        "5.5. Урология мен андрологияның басым бағыттары бойынша ұлттық ғылыми консорциумдарды қалыптастыруға жағдай жасау."
+      ]},
+      { title: "6. Қорытынды ережелер", items: [
+        "Қатысушылар осы қарарды іске асыру Қазақстандағы урологиялық қызметтің одан әрі дамуын қамтамасыз етіп, заманауи жоғары технологиялық емдеу әдістерінің қолжетімділігін арттырады, отандық урологияның халықаралық беделін нығайтады, жас мамандарды даярлаудың тиімді жүйесін құрады және елдің ғылыми әлеуетінің тұрақты дамуын қамтамасыз етеді деп сенеді.",
+        "Қазақстанның кәсіби урологиялық қауымдастығы халыққа урологиялық көмектің сапасын, қолжетімділігін және тиімділігін арттыру стратегиялық мақсатына жету үшін Денсаулық сақтау министрлігімен, медициналық университеттермен, ғылыми ұйымдармен, халықаралық кәсіби қоғамдармен және барлық мүдделі тараптармен сындарлы ынтымақтастыққа дайын екенін растайды."
+      ]}
+    ]
+  }
 };
 
 const registrationText = {
@@ -473,7 +568,7 @@ function HomePage({ lang }: { lang: Lang }) {
 
       <ResearchSurvey lang={lang} />
 
-      <ResolutionSection />
+      <ResolutionSection lang={lang} />
 
       <VenueFeature lang={lang} />
 
@@ -517,20 +612,21 @@ function ResearchSurvey({ lang }: { lang: Lang }) {
 }
 
 
-function ResolutionSection() {
+function ResolutionSection({ lang }: { lang: Lang }) {
+  const resolution = resolutionText[lang];
   return (
     <section className="section-pad bg-white section-motion">
       <div className="site-shell">
         <div className="mx-auto max-w-4xl">
-          <SectionTitle eyebrow={resolutionText.eyebrow} title={resolutionText.title} text={resolutionText.announcement} align="center" />
+          <SectionTitle eyebrow={resolution.eyebrow} title={resolution.title} text={resolution.announcement} align="center" />
           <article className="mt-10 rounded-lg border border-slate-200 bg-mist p-6 shadow-card sm:p-10">
             <div className="space-y-5 text-base leading-8 text-slate">
-              {resolutionText.preamble.map((paragraph) => (
+              {resolution.preamble.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
             <div className="mt-10 space-y-8">
-              {resolutionText.sections.map((section) => (
+              {resolution.sections.map((section) => (
                 <section key={section.title} className="border-l-4 border-gold-500 pl-5">
                   <h3 className="text-xl font-black text-ink">{section.title}</h3>
                   <div className="mt-4 space-y-4 text-base leading-8 text-slate">
@@ -540,6 +636,18 @@ function ResolutionSection() {
                   </div>
                 </section>
               ))}
+            </div>
+
+            <div className="mt-12 border-t border-slate-200 pt-10">
+              <div className="text-center">
+                <div className="fine-label">{lang === "en" ? "Partners" : lang === "kz" ? "Серіктестер" : "Партнёры"}</div>
+                <h3 className="mt-3 text-2xl font-black text-ink sm:text-3xl">{lang === "en" ? "General sponsors" : lang === "kz" ? "Бас демеушілер" : "Генеральные спонсоры"}</h3>
+              </div>
+              <img src="/images/plenum-general-sponsors.svg" alt={lang === "en" ? "General sponsors of the Plenum" : lang === "kz" ? "Пленумның бас демеушілері" : "Генеральные спонсоры Пленума"} className="mx-auto mt-7 w-full max-w-4xl" />
+              <div className="mt-10 text-center">
+                <h3 className="text-2xl font-black text-ink sm:text-3xl">{lang === "en" ? "Sponsors" : lang === "kz" ? "Демеушілер" : "Спонсоры"}</h3>
+              </div>
+              <img src="/images/plenum-sponsors.svg" alt={lang === "en" ? "Sponsors of the Plenum" : lang === "kz" ? "Пленум демеушілері" : "Спонсоры Пленума"} className="mx-auto mt-7 w-full max-w-4xl" />
             </div>
           </article>
         </div>
